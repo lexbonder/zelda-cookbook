@@ -1,3 +1,4 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/lexbonder/zelda-cookbook.png?columns=all)](https://waffle.io/lexbonder/zelda-cookbook?utm_source=badge)
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
