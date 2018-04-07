@@ -15,7 +15,11 @@ describe('SearchBar', () => {
       ingredients: [],
       recipes: [],
       ingredientSearch: '',
-      recipeSearch: ''
+      recipeSearch: '',
+      ingredientButton: false,
+      recipeButton: true,
+      ingredientBar: false,
+      recipeBar: true
     };
 
     expect(wrapper.state()).toEqual(expected);
@@ -60,15 +64,15 @@ describe('SearchBar', () => {
   });
 
   describe('toggleSearchBar', () => {
-    it.skip('should match the snapshot when it is called', () => {
-      // expect(wrapper.instance().toggleSearchBar('ingredient')).toMatchSnapshot();
+    it('should match the snapshot when it is called', () => {
+      expect(wrapper.instance().toggleSearchBar('ingredient')).toMatchSnapshot();
+      expect(wrapper.instance().toggleSearchBar('recipe')).toMatchSnapshot();
     });
   });
 
   describe('toggleSearchButton', () => {
-    it.skip('should match the snapshot when it is called', () => {
-      // wrapper.instance().toggleSearchButton('recipe');
-      // expect(wrapper).toMatchSnapshot();
-    });
+    it('should match the snapshot when it is called', () => {
+      expect(wrapper.instance().toggleSearchBar('ingredient')).toMatchSnapshot();
+      expect(wrapper.instance().toggleSearchBar('recipe')).toMatchSnapshot();    });
   });
 });

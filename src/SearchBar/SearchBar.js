@@ -9,47 +9,67 @@ export default class SearchBar extends Component {
       recipes: [],
       ingredientSearch: '',
       recipeSearch: '',
+      ingredientButton: false,
+      recipeButton: true,
+      ingredientBar: false,
+      recipeBar: true
     };
   }
 
-  handleChange(event) {
+  handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   }
 
-  handleClick(event) {
+  handleClick = event => {
     const { id } = event.target;
     this.toggleSearchBar(id);
     this.toggleSearchButton(id);
   }
 
-  toggleSearchBar(id) {
-    [...document.querySelectorAll('.search-bar')]
-      .forEach(bar => bar.classList.add('search-bar--hidden'));
-    document.querySelector(`.search-bar__${id}`)
-      .classList.remove('search-bar--hidden');
+  toggleSearchBar = id => {
+    const { ingredientBar, recipeBar } = this.state
+    if (this.state[`${id}Bar`] === false) {
+      this.setState({
+        ingredientBar: !ingredientBar,
+        recipeBar: !recipeBar
+      })
+    }
   }
 
-  toggleSearchButton(id) {
-    [...document.querySelectorAll('.search-button')]
-      .forEach(button => button.classList.remove('search-button--selected'));
-    document.getElementById(id)
-      .classList.add('search-button--selected');
+  toggleSearchButton = id => {
+    const { ingredientButton, recipeButton } = this.state
+    if (this.state[`${id}Button`] === false) {
+      this.setState({
+        ingredientButton: !ingredientButton,
+        recipeButton: !recipeButton
+      })
+    }
   }
 
   render() {
+    const {
+      ingredientBar,
+      recipeBar,
+      ingredientButton,
+      recipeButton
+    } = this.state;
+
     return (
       <div>
         <button
-          className="search-button"
+          className={`search-button
+            ${ingredientButton ? 'search-button--selected' : ''}
+          `}
           onClick={this.handleClick}
           id="ingredient"
         >
           Ingredient
         </button>
         <button
-          className="search-button
-            search-button--selected"
+          className={`search-button
+            ${recipeButton ? 'search-button--selected' : ''}
+          `}
           onClick={this.handleClick}
           id="recipe"
         >
@@ -61,8 +81,10 @@ export default class SearchBar extends Component {
             placeholder="Search recipes"
             value={this.state.recipeSearch}
             name="recipeSearch"
-            className="search-bar
-              search-bar__recipe"
+            className={`search-bar
+              search-bar__recipe
+              ${recipeBar ? '' : 'search-bar--hidden'}
+            `}
             onChange={this.handleChange}
           />
           <input
@@ -70,9 +92,10 @@ export default class SearchBar extends Component {
             placeholder="Select up to 5 ingredients"
             value={this.state.ingredientSearch}
             name="ingredientSearch"
-            className="search-bar
+            className={`search-bar
               search-bar__ingredient
-              search-bar--hidden"
+              ${ingredientBar ? '' : 'search-bar--hidden'}
+            `}
             onChange={this.handleChange}
           />
           <input type="submit" />
