@@ -1,0 +1,15 @@
+.search-bar--hidden {
+  display: none; }
+
+.search-button {
+  display: inline-block;
+  width: 110px;
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  background-color: lightgray;
+  color: gray; }
+
+.search-button--selected {
+  background-color: white;
+  color: black; }

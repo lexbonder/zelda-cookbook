@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar should match the snapshot 1`] = `
+<div>
+  <h4
+    className="search-button"
+    id="ingredient"
+    onClick={[Function]}
+  >
+    Ingredient
+  </h4>
+  <h4
+    className="search-button search-button--selected"
+    id="recipe"
+    onClick={[Function]}
+  >
+    Recipe
+  </h4>
+  <form>
+    <input
+      className="search-bar search-bar__recipe"
+      name="recipeSearch"
+      onChange={[Function]}
+      placeholder="Search recipes"
+      type="text"
+      value=""
+    />
+    <input
+      className="search-bar search-bar__ingredient search-bar--hidden"
+      name="ingredientSearch"
+      onChange={[Function]}
+      placeholder="Select up to 5 ingredients"
+      type="text"
+      value=""
+    />
+    <input
+      type="submit"
+    />
+  </form>
+</div>
+`;
+
+exports[`SearchBar toggleSearchBar should match the snapshot when it is called 1`] = `
+<div>
+  <h4
+    className="search-button"
+    id="ingredient"
+    onClick={[Function]}
+  >
+    Ingredient
+  </h4>
+  <h4
+    className="search-button search-button--selected"
+    id="recipe"
+    onClick={[Function]}
+  >
+    Recipe
+  </h4>
+  <form>
+    <input
+      className="search-bar search-bar__recipe"
+      name="recipeSearch"
+      onChange={[Function]}
+      placeholder="Search recipes"
+      type="text"
+      value=""
+    />
+    <input
+      className="search-bar search-bar__ingredient search-bar--hidden"
+      name="ingredientSearch"
+      onChange={[Function]}
+      placeholder="Select up to 5 ingredients"
+      type="text"
+      value=""
+    />
+    <input
+      type="submit"
+    />
+  </form>
+</div>
+`;
