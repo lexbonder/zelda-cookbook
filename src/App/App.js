@@ -6,11 +6,14 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Zelda Cookbook</h1>
+      <div className="App">
+        <header className="App-header">
+          <div id="small-zelda-header"></div>
+        </header>
+        <nav></nav>
         <SearchBar />
       </div>
-    );
+    )
   }
 }
 
