@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import './App.css';
+// import { Route } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <div id="small-zelda-header"></div>
+          <div id="small-zelda-header" />
         </header>
-        <nav></nav>
+        <nav />
         <SearchBar />
       </div>
-    )
+    );
   }
 }
 
