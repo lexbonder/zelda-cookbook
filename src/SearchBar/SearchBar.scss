@@ -1,3 +1,11 @@
+.SearchBar {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  margin: 20px auto;
+  width: fit-content;
+}
+
 .search-bar {
   font-size: 1.5em;
   width: 300px;
@@ -6,8 +14,9 @@
   padding-left: 5px;
 }
 
-.search-form {
+.search-bar__ingredient {
   display: inline-block;
+  position: relative;
 }
 
 .search-bar--hidden {
@@ -37,8 +46,8 @@
 .search-results__container {
   width: 300px;
   border: 1px solid black;
-  margin-left: 260px;
   display: none;
+  position: absolute;
 }
 
 .search-results__containter--show {
