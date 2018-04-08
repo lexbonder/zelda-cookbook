@@ -83,7 +83,7 @@ export default class SearchBar extends Component {
       this.setState({ searchFocus: false })
     }, 150)
   }
-
+  
   render() {
     const {
       ingredientBar,
