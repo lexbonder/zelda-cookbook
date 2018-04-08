@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { getIngredients } from '../apiCalls';
+import { getIngredientNames } from '../dataCleaner';
+// import ingredientTag from '../ingredientTag/ingredientTag';
 import './SearchBar.css';
 
 export default class SearchBar extends Component {
@@ -12,8 +15,16 @@ export default class SearchBar extends Component {
       ingredientButton: false,
       recipeButton: true,
       ingredientBar: false,
-      recipeBar: true
+      recipeBar: true,
+      ingredientTags: [],
+      searchFocus: true,
     };
+  }
+
+  componentDidMount = async () => {
+    const rawIngredients = await getIngredients();
+    const ingredients = getIngredientNames(rawIngredients);
+    this.setState({ ingredients });
   }
 
   handleChange = event => {
@@ -47,6 +58,20 @@ export default class SearchBar extends Component {
     }
   }
 
+  ingredientListToRender = () => {
+    return this.state.ingredients
+      .filter(food => food.name.toLowerCase().includes(this.state.ingredientSearch.toLowerCase()))
+      .map(food => <p key={food.id} className='search-results__item' onClick={this.selectIngredient}>{food.name}</p>)
+  }
+
+  selectIngredient = (event) => {
+    console.log('word')
+  }
+
+  handleFocus = () => {
+    this.setState({ searchFocus: true })
+  }
+
   render() {
     const {
       ingredientBar,
@@ -75,7 +100,6 @@ export default class SearchBar extends Component {
         >
           Recipe
         </button>
-        <form>
           <input
             type="text"
             placeholder="Search recipes"
@@ -97,9 +121,19 @@ export default class SearchBar extends Component {
               ${ingredientBar ? '' : 'search-bar--hidden'}
             `}
             onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
           />
-          <input type="submit" />
-        </form>
+        <section
+          className={`search-results__container
+            ${this.state.searchFocus ?
+              'search-results__containter--show' :
+              ''
+            }
+          `}
+        >
+          {this.ingredientListToRender()}
+        </section>
       </div>
     );
   }
