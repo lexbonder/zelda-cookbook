@@ -1,26 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SearchBar ingredientListToRender should filter its results based on what the user is searching for 1`] = `Array []`;
+
+exports[`SearchBar ingredientListToRender should render a list of ingredients and match the snapshot 1`] = `
+Array [
+  <p
+    className="search-results__item"
+    id={1}
+    onClick={[Function]}
+>
+    Apple
+</p>,
+]
+`;
+
 exports[`SearchBar should match the snapshot 1`] = `
 <div>
-  <button
-    className="search-button
-              
-            "
-    id="ingredient"
-    onClick={[Function]}
+  <section
+    className="SearchBar"
   >
-    Ingredient
-  </button>
-  <button
-    className="search-button
-              search-button--selected
-            "
-    id="recipe"
-    onClick={[Function]}
-  >
-    Recipe
-  </button>
-  <form>
+    <button
+      className="search-button
+                  
+                "
+      id="ingredient"
+      onClick={[Function]}
+    >
+      Ingredient
+    </button>
+    <button
+      className="search-button
+                  search-button--selected
+                "
+      id="recipe"
+      onClick={[Function]}
+    >
+      Recipe
+    </button>
     <input
       className="search-bar
                   search-bar__recipe
@@ -32,22 +48,44 @@ exports[`SearchBar should match the snapshot 1`] = `
       type="text"
       value=""
     />
-    <input
-      className="search-bar
+    <div
+      className="
                   search-bar__ingredient
                   search-bar--hidden
                 "
-      name="ingredientSearch"
-      onChange={[Function]}
-      placeholder="Select up to 5 ingredients"
-      type="text"
-      value=""
-    />
-    <input
-      type="submit"
-    />
-  </form>
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <input
+        className="search-bar
+                    "
+        name="ingredientSearch"
+        onChange={[Function]}
+        placeholder="Select up to 5 ingredients"
+        type="text"
+        value=""
+      />
+      <section
+        className="search-results__container
+                      
+                    "
+      />
+    </div>
+  </section>
+  <section
+    className="ingredientTag-container"
+  />
 </div>
+`;
+
+exports[`SearchBar tagsToRender should return tags depending on what is in this.state.ingredientTags 1`] = `
+Array [
+  <IngredientTag
+    id={1}
+    name="Apple"
+    remove={[Function]}
+/>,
+]
 `;
 
 exports[`SearchBar toggleSearchBar should match the snapshot when it is called 1`] = `undefined`;

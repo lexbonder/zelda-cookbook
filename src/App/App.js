@@ -10,7 +10,7 @@ class App extends Component {
         <header className="App-header">
           <div id="small-zelda-header" />
         </header>
-        <nav />
+        <nav></nav>
         <SearchBar />
       </div>
     );
