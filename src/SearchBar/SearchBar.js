@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getIngredients } from '../apiCalls';
 import { getIngredientNames } from '../dataCleaner';
-// import ingredientTag from '../ingredientTag/ingredientTag';
+import IngredientTag from '../IngredientTag/IngredientTag';
 import './SearchBar.css';
 
 export default class SearchBar extends Component {
@@ -68,8 +68,8 @@ export default class SearchBar extends Component {
     const { ingredientTags } = this.state
     const { innerText , id } = event.target;
     const newIngredient = { id, name: innerText };
-    const checkDupe = ingredientTags.find(tag => tag.name === newIngredient.name)
-    if ( !checkDupe ) {
+    const checkDupe = ingredientTags.some(tag => tag.name === newIngredient.name)
+    if ( !checkDupe && ingredientTags.length < 5 ) {
       this.setState({ ingredientTags: [...ingredientTags, newIngredient]})
     }
   }
@@ -83,6 +83,21 @@ export default class SearchBar extends Component {
       this.setState({ searchFocus: false })
     }, 150)
   }
+
+  tagsToRender = () => {
+    const { ingredientTags } = this.state;
+    return ingredientTags.map(tag => <IngredientTag
+      {...tag}
+      key={tag.id}
+      remove={this.removeIngredient}
+    />)
+  }
+
+  removeIngredient = (event) => {
+    const { id } = event.target;
+    const ingredientTags = this.state.ingredientTags.filter(tag => tag.id !== id);
+    this.setState({ ingredientTags });
+  }
   
   render() {
     const {
@@ -93,64 +108,69 @@ export default class SearchBar extends Component {
     } = this.state;
 
     return (
-      <div className="SearchBar">
-        <button
-          className={`search-button
-            ${ingredientButton ? 'search-button--selected' : ''}
-          `}
-          onClick={this.handleClick}
-          id="ingredient"
-        >
-          Ingredient
-        </button>
-        <button
-          className={`search-button
-            ${recipeButton ? 'search-button--selected' : ''}
-          `}
-          onClick={this.handleClick}
-          id="recipe"
-        >
-          Recipe
-        </button>
-        <input
-          type="text"
-          placeholder="Search recipes"
-          value={this.state.recipeSearch}
-          name="recipeSearch"
-          className={`search-bar
-            search-bar__recipe
-            ${recipeBar ? '' : 'search-bar--hidden'}
-          `}
-          onChange={this.handleChange}
-        />
-        <div 
-          className={`
-            search-bar__ingredient
-            ${ingredientBar ? '' : 'search-bar--hidden'}
-          `}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        >
+      <div>
+        <section className="SearchBar">
+          <button
+            className={`search-button
+              ${ingredientButton ? 'search-button--selected' : ''}
+            `}
+            onClick={this.handleClick}
+            id="ingredient"
+          >
+            Ingredient
+          </button>
+          <button
+            className={`search-button
+              ${recipeButton ? 'search-button--selected' : ''}
+            `}
+            onClick={this.handleClick}
+            id="recipe"
+          >
+            Recipe
+          </button>
           <input
             type="text"
-            placeholder="Select up to 5 ingredients"
-            value={this.state.ingredientSearch}
-            name="ingredientSearch"
+            placeholder="Search recipes"
+            value={this.state.recipeSearch}
+            name="recipeSearch"
             className={`search-bar
+              search-bar__recipe
+              ${recipeBar ? '' : 'search-bar--hidden'}
             `}
             onChange={this.handleChange}
           />
-          <section
-            className={`search-results__container
-              ${this.state.searchFocus ?
-                'search-results__containter--show' :
-                ''
-              }
+          <div 
+            className={`
+              search-bar__ingredient
+              ${ingredientBar ? '' : 'search-bar--hidden'}
             `}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
           >
-            {this.ingredientListToRender()}
-          </section>
-        </div>
+            <input
+              type="text"
+              placeholder="Select up to 5 ingredients"
+              value={this.state.ingredientSearch}
+              name="ingredientSearch"
+              className={`search-bar
+              `}
+              onChange={this.handleChange}
+            />
+            <section
+              className={`search-results__container
+                ${this.state.searchFocus ?
+                  'search-results__containter--show' :
+                  ''
+                }
+              `}
+            >
+              {this.ingredientListToRender()}
+            </section>
+          </div>
+        </section>
+        <section className="ingredientTag-container">
+          {this.tagsToRender()}
+        </section>
       </div>
     );
   }
