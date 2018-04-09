@@ -50,3 +50,9 @@
   .search-results__item:hover {
     background-color: gray;
     font-weight: bold; }
+
+.ingredientTag-container {
+  display: flex;
+  justify-content: space-around;
+  width: fit-content;
+  margin: auto; }

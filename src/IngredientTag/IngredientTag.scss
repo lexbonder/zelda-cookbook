@@ -1,0 +1,16 @@
+.ingredient-tag {
+  font-weight: normal;
+  background-color: rgba(255, 255, 255, .6);
+  border: 3px solid rgb(145,117,70);
+  padding: 10px;
+  border-radius: 20px;
+  margin: 0 20px;
+
+  &:hover {
+    background-color: rgba(255, 0, 0, .3);
+    border-color: red;
+    color: red;
+    text-decoration: line-through;
+    cursor: pointer;
+  }
+}

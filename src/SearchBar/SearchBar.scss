@@ -63,3 +63,10 @@
     font-weight: bold;
   }
 }
+
+.ingredientTag-container {
+  display: flex;
+  justify-content: space-around;
+  width: fit-content;
+  margin: auto;
+}
