@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const getIngredients = jest.fn()
   .mockImplementation(() => ([{
     id: 1,

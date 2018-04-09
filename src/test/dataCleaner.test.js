@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { getIngredientNames } from '../dataCleaner';
 
 describe('getIngredientNames', () => {

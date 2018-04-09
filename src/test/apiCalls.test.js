@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { getIngredients } from '../apiCalls';
 
 describe('getIngredients', () => {
