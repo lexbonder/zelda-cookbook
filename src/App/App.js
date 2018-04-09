@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
+import RecipeContainer from '../RecipeContainer/RecipeContainer';
 import './App.css';
 // import { Route } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ class App extends Component {
         </header>
         <nav />
         <SearchBar />
+        <RecipeContainer />
       </div>
     );
   }

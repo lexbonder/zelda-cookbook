@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchBar should match the snapshot 1`] = `
-<div>
+<div
+  className="SearchBar"
+>
   <button
     className="search-button
               
@@ -20,22 +22,27 @@ exports[`SearchBar should match the snapshot 1`] = `
   >
     Recipe
   </button>
-  <form>
+  <input
+    className="search-bar
+              search-bar__recipe
+              
+            "
+    name="recipeSearch"
+    onChange={[Function]}
+    placeholder="Search recipes"
+    type="text"
+    value=""
+  />
+  <div
+    className="
+              search-bar__ingredient
+              search-bar--hidden
+            "
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
     <input
       className="search-bar
-                  search-bar__recipe
-                  
-                "
-      name="recipeSearch"
-      onChange={[Function]}
-      placeholder="Search recipes"
-      type="text"
-      value=""
-    />
-    <input
-      className="search-bar
-                  search-bar__ingredient
-                  search-bar--hidden
                 "
       name="ingredientSearch"
       onChange={[Function]}
@@ -43,10 +50,12 @@ exports[`SearchBar should match the snapshot 1`] = `
       type="text"
       value=""
     />
-    <input
-      type="submit"
+    <section
+      className="search-results__container
+                  
+                "
     />
-  </form>
+  </div>
 </div>
 `;
 
