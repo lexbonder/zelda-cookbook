@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getRecipes } from '../apiCalls';
-import { getRecipeData } from '../dataCleaner';
+// import { getRecipeData } from '../dataCleaner';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import './RecipeContainer.css';
 
