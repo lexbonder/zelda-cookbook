@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeCard should match the snapshot 1`] = `
+<div
+  id="recipe-card-container"
+>
+  <article
+    className="Baked Apple"
+    onClick={[Function]}
+  >
+    <div
+      className="Baked Apple recipe-details"
+    >
+      <img
+        alt="Seafood Curry"
+        src="Seafoodcurry.jpg"
+      />
+      <div
+        className="Baked Apple name-hearts"
+      >
+        <h2
+          className="Baked Apple recipe-name"
+        >
+          Name: 
+          Baked Apple
+        </h2>
+        <h3
+          className="Baked Apple recipe-hearts"
+        >
+          Hearts: 
+          ¾
+        </h3>
+      </div>
+      <h5
+        className="Baked Apple recipe-type"
+      >
+        Type: 
+        Restore Hearts
+      </h5>
+    </div>
+    <h3
+      className="Baked Apple recipe-notes"
+    >
+      Notes: 
+      Open flame.
+    </h3>
+    <div
+      className="Baked Apple recipe-specific-details"
+    >
+      <h5
+        className="Baked Apple strength"
+      >
+        Strength: 
+      </h5>
+      <h5
+        className="Baked Apple duration"
+      >
+        Duration: 
+      </h5>
+      <h5
+        className="Baked Apple resale"
+      >
+        <img
+          alt="Green Rupees Jewel"
+          src="GreenRupee.png"
+        />
+        <p>
+          0
+        </p>
+      </h5>
+    </div>
+    <div
+      className="Baked Apple ingredients"
+    >
+      <h3
+        className="Baked Apple ingredient1"
+      >
+        2
+      </h3>
+      <h3
+        className="Baked Apple ingredient2"
+      />
+      <h3
+        className="Baked Apple ingredient3"
+      />
+      <h3
+        className="Baked Apple ingredient4"
+      />
+      <h3
+        className="Baked Apple ingredient5"
+      />
+    </div>
+  </article>
+</div>
+`;
