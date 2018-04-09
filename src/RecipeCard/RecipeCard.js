@@ -28,7 +28,7 @@ const RecipeCard = (props) => {
     }
   }
   
-  const recipeHtml = <article className={ name } onClick={(e) => clicked(e)} >
+  const recipeHtml = <article id={ id } className={ name } onClick={(e) => clicked(e)} >
   
                         <div className={`${ name } recipe-details`}>
                           <img src={require("../assets/Seafoodcurry.jpg")} alt="Seafood Curry" />
