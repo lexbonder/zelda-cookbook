@@ -60,8 +60,17 @@ export default class SearchBar extends Component {
 
   ingredientListToRender = () => {
     return this.state.ingredients
-      .filter(food => food.name.toLowerCase().includes(this.state.ingredientSearch.toLowerCase()))
-      .map(food => <p key={food.id} className='search-results__item' id={food.id} onClick={this.selectIngredient}>{food.name}</p>)
+      .filter(food => food.name.toLowerCase().includes(
+        this.state.ingredientSearch.toLowerCase())
+      )
+      .map(food => <p
+        key={food.id} 
+        className='search-results__item'
+        id={food.id}
+        onClick={this.selectIngredient}
+      >
+        {food.name}
+      </p>)
   }
 
   selectIngredient = (event) => {
