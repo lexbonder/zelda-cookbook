@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IngredientTag should match the snapshot 1`] = `
+<h1
+  className="ingredient-tag"
+  id={1}
+  onClick={[Function]}
+>
+  Apple
+</h1>
+`;
