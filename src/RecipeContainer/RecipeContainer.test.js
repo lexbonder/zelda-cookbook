@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import RecipeContainer from './RecipeContainer';
+import { getRecipes } from '../apiCalls';
+import { getRecipeData } from '../dataCleaner';
 
 jest.mock('../apiCalls')
 
