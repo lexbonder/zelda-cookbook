@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
+import RecipeContainer from '../RecipeContainer/RecipeContainer';
 import './App.css';
 // import { Route } from 'react-router-dom';
 
@@ -8,8 +9,8 @@ const App = () => (
     <header className="App-header">
       <div id="small-zelda-header" />
     </header>
-    <nav />
     <SearchBar />
+    <RecipeContainer />
   </div>
 );
 
