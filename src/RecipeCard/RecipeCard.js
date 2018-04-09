@@ -1,6 +1,6 @@
 import React from 'react';
 import './RecipeCard.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const RecipeCard = (props) => {
     const {id,
@@ -16,37 +16,68 @@ const RecipeCard = (props) => {
           ingredient5, 
           strength, 
           resale } = props
+
+  const clicked = (e) => {
+    const recipeTarget = e.target
+    const targetArticle = recipeTarget.closest('article')
+    if(targetArticle.className.includes('active-recipe')) {
+      targetArticle.classList.remove('active-recipe')
+      targetArticle.scrollTo(0, 0)           
+    } else {
+      targetArticle.classList.add('active-recipe')      
+    }
+  }
   
-  const recipeHtml = <div className="recipe-card" id={ id }>
-                        <img src="../assets/zelda-header.png" alt="Seafood Curry" />
-                        <h1 className="recipe-name">Name: { name }</h1>
-                        <h3 className="recipe-hearts">Hearts: { hearts }</h3>
-                        <div className="recipe-details">
-                          <h5 className="recipe-type">Type: { type }</h5>
-                          <h5 className="strength">Strength: { strength }</h5>
-                          <h5 className="duration">Duration: { duration }</h5>
-                          <h5 className="resale">Resale: { resale }</h5>
+  const recipeHtml = <article className={ name } onClick={(e) => clicked(e)} >
+  
+                        <div className={`${ name } recipe-details`}>
+                          <img src={require("../assets/Seafoodcurry.jpg")} alt="Seafood Curry" />
+                          <div className={`${ name } name-hearts`}>
+                            <h2 className={`${ name } recipe-name`}>Name: { name }</h2>
+                            <h3 className={`${ name } recipe-hearts`}>Hearts: { hearts }</h3>
+                          </div>
+                          <h5 className={`${ name } recipe-type`}>Type: { type }</h5>
                         </div>
-                        <h3 className="recipe-notes">Notes: { notes }</h3>
-                        <div className="ingredients">
-                          <h3 className="ingredient1">{ ingredient1 ? ingredient1 : 'N/A'}</h3>
-                          <h3 className="ingredient2">{ ingredient2 ? ingredient2 : 'N/A'}</h3>
-                          <h3 className="ingredient3">{ ingredient3 ? ingredient3 : 'N/A'}</h3>
-                          <h3 className="ingredient4">{ ingredient4 ? ingredient4 : 'N/A'}</h3>
-                          <h3 className="ingredient5">{ ingredient5 ? ingredient5 : 'N/A'}</h3>
+
+                        <h3 className={`${ name } recipe-notes`}>Notes: { notes }</h3>
+
+                        <div className={`${ name } recipe-specific-details`}>
+                          <h5 className={`${ name } strength`}>Strength: { strength }</h5>
+                          <h5 className={`${ name } duration`}>Duration: { duration }</h5>
+                          <h5 className={`${ name } resale`}><img src={require("../assets/GreenRupee.png")} alt="Green Rupees Jewel"/><p>{ resale }</p></h5>
                         </div>
-                     </div>        
+
+                        <div className={`${ name } ingredients`}>
+                          <h3 className={`${ name } ingredient1`}>{ ingredient1 }</h3>
+                          <h3 className={`${ name } ingredient2`}>{ ingredient2 }</h3>
+                          <h3 className={`${ name } ingredient3`}>{ ingredient3 }</h3>
+                          <h3 className={`${ name } ingredient4`}>{ ingredient4 }</h3>
+                          <h3 className={`${ name } ingredient5`}>{ ingredient5 }</h3>
+                        </div>
+                     </article>        
 
   return (
-    <div id="all-recipes">
+    <div id="recipe-card-container">
       { recipeHtml }
     </div>
   )
 }
 
-
-
-
-
+RecipeCard.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string, 
+  hearts: PropTypes.string, 
+  type: PropTypes.string, 
+  duration: PropTypes.string, 
+  notes: PropTypes.string, 
+  ingredient1: PropTypes.number, 
+  ingredient2: PropTypes.number, 
+  ingredient3: PropTypes.number, 
+  ingredient4: PropTypes.number, 
+  ingredient5: PropTypes.number, 
+  strength: PropTypes.string, 
+  resale: PropTypes.string,
+  clicked: PropTypes.func
+}
 
 export default RecipeCard;

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:700');
+
+#all-recipe-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'PT Serif', serif;
+}
+
+#recipe-card-container {
+  max-width: 490px;
+  margin: 10px auto;
+  border-radius: 10px;
+  background-color: #58625E;
+  padding: 10px;
+  color: rgb(223, 213, 195);
+}
+
+article {
+  height: 80px;
+  overflow-y: hidden
+}
+
+.active-recipe {
+  height: fit-content;
+}
+
+.recipe-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.name-hearts {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-name,
+.recipe-hearts {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+
+.recipe-type {
+  margin-top: 5px;
+  padding-left: 10px;
+  margin-left: auto;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  opacity: 1;
+}
+
+.resale {
+  display: flex;
+  flex-direction: row;
+}
+
+.resale img {
+  width: 15px;
+  height: 24px;
+  opacity: 1;
+}
+
+.resale p {
+  margin: 3px;
+  padding-left: 7px;
+}
+
+.ingredients,
+.recipe-specific-details {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}

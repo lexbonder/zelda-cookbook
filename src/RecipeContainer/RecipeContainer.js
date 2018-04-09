@@ -3,7 +3,6 @@ import { getRecipes } from '../apiCalls';
 import { getRecipeData } from '../dataCleaner';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import './RecipeContainer.css';
-// import PropTypes from 'prop-types';
 
 export default class RecipeContainer extends Component {
   constructor() {
@@ -20,7 +19,6 @@ export default class RecipeContainer extends Component {
       // const recipeType = this.props.location.pathname.slice(1);
       // console.log('recipeType', recipeType)
       const rawRecipes = await getRecipes();
-      console.log('rawRecipes', rawRecipes)
       // const recipes = getRecipeData(rawRecipes);
       // console.log('recipes', recipes)
       this.setState({ rawRecipes })
@@ -31,7 +29,7 @@ export default class RecipeContainer extends Component {
 
   renderRecipes = () => {
     const recipes = this.state.rawRecipes
-    
+
     if(recipes.length > 0) {
       const recipesToRender = recipes.map(recipe => {
         return <RecipeCard key={ recipe.id }
@@ -55,7 +53,7 @@ export default class RecipeContainer extends Component {
 
   render() {
     return (
-      <div id="recipe-container">
+      <div id="all-recipe-container">
         { this.renderRecipes() }
       </div>
     )
