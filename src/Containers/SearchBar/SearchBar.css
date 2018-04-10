@@ -39,7 +39,9 @@
   width: 300px;
   border: 1px solid black;
   display: none;
-  position: absolute; }
+  position: absolute;
+  max-height: 260px;
+  overflow: scroll; }
 
 .search-results__containter--show {
   display: block; }

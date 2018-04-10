@@ -1,70 +1,45 @@
 /* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
-import SearchBar from './SearchBar';
-import * as apiCalls from '../apiCalls';
-import * as dataCleaner from '../dataCleaner';
+import { SearchBar, MSTP, MDTP } from './SearchBar';
+import { addIngredientFilter, removeIngredientFilter } from '../../actions';
+import * as dataCleaner from '../../dataCleaner';
 
-jest.mock('../apiCalls')
-jest.mock('../dataCleaner')
+jest.mock('../../dataCleaner')
 jest.useFakeTimers();
 
 describe('SearchBar', () => {
-  let wrapper; 
+  let wrapper;
+  let mockIngredients = []
+  let mockFilter = {ingredients: []}
+  let mockAddIngredientFilter = jest.fn()
+  let mockRemoveIngredientFilter = jest.fn()
   
   beforeEach(() => {
-    wrapper = shallow(<SearchBar />);
+    wrapper = shallow(<SearchBar
+      ingredients={ mockIngredients }
+      filter = { mockFilter }
+      addIngredientFilter = { mockAddIngredientFilter }
+      removeIngredientFilter = { mockRemoveIngredientFilter }
+    />);
   });
 
   it('should have a default state', () => {
     const expected = {
-      ingredients: [],
-      recipes: [],
       ingredientSearch: '',
       recipeSearch: '',
       ingredientButton: false,
       recipeButton: true,
       ingredientBar: false,
       recipeBar: true,
-      ingredientTags: [],
-      searchFocus: false,
+      searchFocus: true,
     };
 
-    expect(shallow(<SearchBar />).state()).toEqual(expected);
+    expect(wrapper.state()).toEqual(expected);
   });
 
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  });
-
-  describe('componentDidMount', () => {
-    it('should call getIngredients', () => {
-      expect(apiCalls.getIngredients).toHaveBeenCalled();
-    });
-
-    it('should call getIngredientNames with an array of raw ingredients', () => {
-      const mockRawIngredients = [{
-        id: 1,
-        category: 'food',
-        duration: '0:30',
-        effect: null,
-        hearts: '0.5',
-        name: 'Apple',
-        resale: '3',
-        type: 'Fruit',
-        created_at: '2018-04-07T02:42:46.591Z',
-        updated_at: '2018-04-07T02:42:46.591Z'
-      }]
-      expect(dataCleaner.getIngredientNames).toHaveBeenCalledWith(mockRawIngredients)
-    });
-
-    it('should setState of ingredients to be an array of cleaned ingredients', () => {
-      const mockIngredients = [{
-        name: 'Apple',
-        id: 1
-      }]
-      expect(wrapper.state().ingredients).toEqual(mockIngredients)
-    });
   });
 
   describe('handleChange', () => {
@@ -126,43 +101,46 @@ describe('SearchBar', () => {
   });
 
   describe('selectIngredient', () => {
-    it('should add a selected ingredient to this.state.ingredientTags', () => {
+    it('should not call addIngredientFilter if the object is already selected', () => {
+      wrapper = shallow(<SearchBar
+        ingredients={ mockIngredients }
+        filter = { {ingredients: [{id: 1, name: 'Apple'}]} }
+        addIngredientFilter = { mockAddIngredientFilter }
+        removeIngredientFilter = { mockRemoveIngredientFilter }
+      />)
+
       const mockEvent = { target: {id: 1, innerText: 'Apple'}}
-      const expected = [{id: 1, name: 'Apple'}]
       wrapper.instance().selectIngredient(mockEvent)
-      expect(wrapper.state().ingredientTags).toEqual(expected)
+      expect(mockAddIngredientFilter).not.toHaveBeenCalled()
     });
 
-    it('should not add duplicate ingredients', () => {
-      wrapper.state().ingredientTags = [{id: 1, name: 'Apple'}]
-      const mockEvent = { target: {id: 1, innerText: 'Apple'}}
-      const expected = [{id: 1, name: 'Apple'}]
-      wrapper.instance().selectIngredient(mockEvent)
-      expect(wrapper.state().ingredientTags).toEqual(expected)
-    });
-
-    it('should not add more than 5 ingredients', () => {
-      wrapper.state().ingredientTags = [
-        {id: 0, name: 'Chicken'},
-        {id: 2, name: 'Grape'},
-        {id: 3, name: 'Pear'},
-        {id: 4, name: 'Fish'},
-        {id: 5, name: 'Tuna'}
-      ]
-      const expected = [
-        {id: 0, name: 'Chicken'},
-        {id: 2, name: 'Grape'},
-        {id: 3, name: 'Pear'},
-        {id: 4, name: 'Fish'},
-        {id: 5, name: 'Tuna'}
-      ]
+    it('should not call addIngredientFilter if there are 5 ingredients already', () => {
+      wrapper = shallow(<SearchBar
+        ingredients={ mockIngredients }
+        filter = {{ ingredients: [
+          {id: 0, name: 'Chicken'},
+          {id: 2, name: 'Grape'},
+          {id: 3, name: 'Pear'},
+          {id: 4, name: 'Fish'},
+          {id: 5, name: 'Tuna'}
+        ]}}
+        addIngredientFilter = { mockAddIngredientFilter }
+        removeIngredientFilter = { mockRemoveIngredientFilter }
+      />)
       const mockEvent = { 
         target: {
           id: 1, innerText: 'Apple'
         }
       }
       wrapper.instance().selectIngredient(mockEvent)
-      expect(wrapper.state().ingredientTags).toEqual(expected)
+      expect(mockAddIngredientFilter).not.toHaveBeenCalled()
+    });
+
+    it('should call this.props.addIngredientFilter with a new ingredient', () => {
+      const mockEvent = { target: {id: 1, innerText: 'Apple'}}
+      const expected = {id: 1, name: 'Apple'}
+      wrapper.instance().selectIngredient(mockEvent)
+      expect(mockAddIngredientFilter).toHaveBeenCalledWith(expected)
     });
   });
 
@@ -183,27 +161,67 @@ describe('SearchBar', () => {
   });
 
   describe('tagsToRender', () => {
-    it('should return tags depending on what is in this.state.ingredientTags', () => {
-      wrapper.state().ingredientTags = [{id: 1, name: 'Apple'}]
+    it('should return tags depending on what is in the filters ingredients array', () => {
+      wrapper = shallow(<SearchBar
+        ingredients={ mockIngredients }
+        filter = {{ ingredients: [
+          {id: 0, name: 'Chicken'},
+          {id: 2, name: 'Grape'},
+          {id: 3, name: 'Pear'},
+          {id: 4, name: 'Fish'},
+          {id: 5, name: 'Tuna'}
+        ]}}
+        addIngredientFilter = { mockAddIngredientFilter }
+        removeIngredientFilter = { mockRemoveIngredientFilter }
+      />)
       expect(wrapper.instance().tagsToRender()).toMatchSnapshot()
     });
   });
 
   describe('removeIngredient', () => {
-    it('should remove an ingredient from ingredientTags based on their id', () => {
-      wrapper.state().ingredientTags = [
-        {id: 1, name: 'Apple'},
-        {id: 2, name: 'Grape'},
-        {id: 3, name: 'Pear'}
-      ]
-      const expected = [
-        {id: 2, name: 'Grape'},
-        {id: 3, name: 'Pear'}
-      ]
+    it('should call removeIngredientFilter with the selected id', () => {
       const mockEvent = {target: {id: 1}}
 
       wrapper.instance().removeIngredient(mockEvent)
-      expect(wrapper.state().ingredientTags).toEqual(expected)
+      expect(mockRemoveIngredientFilter).toHaveBeenCalledWith(1)
+    });
+  });
+
+  describe('MSTP', () => {
+    it('should return an object with with ingredients and a filter object', () => {
+      const mockState = {
+        ingredients: [{
+          id: 1,
+          name: 'Apple',
+        }],
+        filter: {
+          ingredients: []
+        }
+      }
+      const mapped = MSTP(mockState)
+
+      expect(mapped.ingredients).toEqual([{
+        id: 1,
+        name: 'Apple',
+      }]);
+      expect(mapped.filter).toEqual({
+        ingredients: []
+      });
+    });
+  });
+
+  describe('MDTP', () => {
+    it('should call dispatch when addIngredientFilter or removeIngredientFilter are called', () => {
+      const mockDispatch = jest.fn();
+      const mockIngredient = { id: 1, name: 'Apple' };
+      const mockId = 1;
+      const result = MDTP(mockDispatch);
+
+      result.addIngredientFilter(mockIngredient);
+      expect(mockDispatch).toHaveBeenCalledWith(addIngredientFilter(mockIngredient));
+
+      result.removeIngredientFilter(mockId);
+      expect(mockDispatch).toHaveBeenCalledWith(removeIngredientFilter(mockId));
     });
   });
 });

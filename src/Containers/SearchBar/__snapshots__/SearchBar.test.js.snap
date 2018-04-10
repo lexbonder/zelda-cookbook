@@ -67,9 +67,18 @@ exports[`SearchBar should match the snapshot 1`] = `
       />
       <section
         className="search-results__container
-                      
+                      search-results__containter--show
                     "
-      />
+      >
+        <p
+          className="search-results__item"
+          id={1}
+          key="1"
+          onClick={[Function]}
+        >
+          Apple
+        </p>
+      </section>
     </div>
   </section>
   <section
@@ -78,11 +87,31 @@ exports[`SearchBar should match the snapshot 1`] = `
 </div>
 `;
 
-exports[`SearchBar tagsToRender should return tags depending on what is in this.state.ingredientTags 1`] = `
+exports[`SearchBar tagsToRender should return tags depending on what is in the filters ingredients array 1`] = `
 Array [
   <IngredientTag
-    id={1}
-    name="Apple"
+    id={0}
+    name="Chicken"
+    remove={[Function]}
+/>,
+  <IngredientTag
+    id={2}
+    name="Grape"
+    remove={[Function]}
+/>,
+  <IngredientTag
+    id={3}
+    name="Pear"
+    remove={[Function]}
+/>,
+  <IngredientTag
+    id={4}
+    name="Fish"
+    remove={[Function]}
+/>,
+  <IngredientTag
+    id={5}
+    name="Tuna"
     remove={[Function]}
 />,
 ]

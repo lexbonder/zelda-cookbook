@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getIngredientNames } from '../../dataCleaner';
 import IngredientTag from '../../Components/IngredientTag/IngredientTag';
+import { addIngredientFilter, removeIngredientFilter } from '../../actions';
 import './SearchBar.css';
 
 export class SearchBar extends Component {
@@ -14,8 +15,7 @@ export class SearchBar extends Component {
       recipeButton: true,
       ingredientBar: false,
       recipeBar: true,
-      ingredientTags: [],
-      searchFocus: false,
+      searchFocus: true,
     };
   }
 
@@ -35,7 +35,9 @@ export class SearchBar extends Component {
     if (this.state[`${id}Bar`] === false) {
       this.setState({
         ingredientBar: !ingredientBar,
-        recipeBar: !recipeBar
+        recipeBar: !recipeBar,
+        ingredientSearch: '',
+        recipeSearch: ''
       })
     }
   }
@@ -67,13 +69,14 @@ export class SearchBar extends Component {
   }
 
   selectIngredient = (event) => {
-    const { ingredientTags } = this.state
+    const { ingredients } = this.props.filter;
     const { innerText , id } = event.target;
     const newIngredient = { id, name: innerText };
-    const checkDupe = ingredientTags.some(tag => tag.name === newIngredient.name)
-    if ( !checkDupe && ingredientTags.length < 5 ) {
-      this.setState({ ingredientTags: [...ingredientTags, newIngredient]})
+    const checkDupe = ingredients.some(tag => tag.name === newIngredient.name)
+    if ( !checkDupe && ingredients.length < 5 ) {
+      this.props.addIngredientFilter(newIngredient)
     }
+    this.setState({ searchFocus: false, ingredientSearch: '' })
   }
 
   handleFocus = () => {
@@ -87,8 +90,8 @@ export class SearchBar extends Component {
   }
 
   tagsToRender = () => {
-    const { ingredientTags } = this.state;
-    return ingredientTags.map(tag => <IngredientTag
+    const { ingredients } = this.props.filter;
+    return ingredients.map(tag => <IngredientTag
       {...tag}
       key={tag.id}
       remove={this.removeIngredient}
@@ -97,8 +100,7 @@ export class SearchBar extends Component {
 
   removeIngredient = (event) => {
     const { id } = event.target;
-    const ingredientTags = this.state.ingredientTags.filter(tag => tag.id !== id);
-    this.setState({ ingredientTags });
+    this.props.removeIngredientFilter(id)
   }
   
   render() {
@@ -178,6 +180,14 @@ export class SearchBar extends Component {
   }
 }
 
-export const MSTP = ({ingredients}) => ({ingredients});
+export const MSTP = ({ingredients, filter}) => ({
+  ingredients,
+  filter
+});
 
-export default connect(MSTP)(SearchBar);
+export const MDTP = dispatch => ({
+  addIngredientFilter: ingredient => dispatch(addIngredientFilter(ingredient)),
+  removeIngredientFilter: id => dispatch(removeIngredientFilter(id))
+})
+
+export default connect(MSTP, MDTP)(SearchBar);
