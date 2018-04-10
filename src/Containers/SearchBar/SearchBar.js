@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { getIngredients } from '../apiCalls';
-import { getIngredientNames } from '../dataCleaner';
-import IngredientTag from '../IngredientTag/IngredientTag';
+import { connect } from 'react-redux';
+import { getIngredientNames } from '../../dataCleaner';
+import IngredientTag from '../../Components/IngredientTag/IngredientTag';
 import './SearchBar.css';
 
-export default class SearchBar extends Component {
+export class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ingredients: [],
-      recipes: [],
       ingredientSearch: '',
       recipeSearch: '',
       ingredientButton: false,
@@ -19,12 +17,6 @@ export default class SearchBar extends Component {
       ingredientTags: [],
       searchFocus: false,
     };
-  }
-
-  componentDidMount = async () => {
-    const rawIngredients = await getIngredients();
-    const ingredients = getIngredientNames(rawIngredients);
-    this.setState({ ingredients });
   }
 
   handleChange = event => {
@@ -59,7 +51,8 @@ export default class SearchBar extends Component {
   }
 
   ingredientListToRender = () => {
-    return this.state.ingredients
+    const ingredientNames = getIngredientNames(this.props.ingredients)
+    return ingredientNames
       .filter(food => food.name.toLowerCase().includes(
         this.state.ingredientSearch.toLowerCase())
       )
@@ -184,3 +177,7 @@ export default class SearchBar extends Component {
     );
   }
 }
+
+export const MSTP = ({ingredients}) => ({ingredients});
+
+export default connect(MSTP)(SearchBar);

@@ -1,6 +1,8 @@
 import React from 'react';
 import './RecipeCard.css';
 import PropTypes from 'prop-types';
+import greenRupee from '../../assets/GreenRupee.png'
+import seafoodCurry from '../../assets/Seafoodcurry.jpg'
 
 const RecipeCard = (props) => {
     const {id,
@@ -22,7 +24,6 @@ const RecipeCard = (props) => {
     const targetArticle = recipeTarget.closest('article')
     if(targetArticle.className.includes('active-recipe')) {
       targetArticle.classList.remove('active-recipe')
-      targetArticle.scrollTo(0, 0)           
     } else {
       targetArticle.classList.add('active-recipe')      
     }
@@ -31,7 +32,7 @@ const RecipeCard = (props) => {
   const recipeHtml = <article id={ id } className={ name } onClick={(e) => clicked(e)} >
   
                         <div className={`${ name } recipe-details`}>
-                          <img src={require("../assets/Seafoodcurry.jpg")} alt="Seafood Curry" />
+                          <img src={seafoodCurry} alt="Seafood Curry" />
                           <div className={`${ name } name-hearts`}>
                             <h2 className={`${ name } recipe-name`}>Name: { name }</h2>
                             <h3 className={`${ name } recipe-hearts`}>Hearts: { hearts }</h3>
@@ -44,7 +45,7 @@ const RecipeCard = (props) => {
                         <div className={`${ name } recipe-specific-details`}>
                           <h5 className={`${ name } strength`}>Strength: { strength }</h5>
                           <h5 className={`${ name } duration`}>Duration: { duration }</h5>
-                          <h5 className={`${ name } resale`}><img src={require("../assets/GreenRupee.png")} alt="Green Rupees Jewel"/><p>{ resale }</p></h5>
+                          <h5 className={`${ name } resale`}><img src={greenRupee} alt="Green Rupees Jewel"/><p>{ resale }</p></h5>
                         </div>
 
                         <div className={`${ name } ingredients`}>
