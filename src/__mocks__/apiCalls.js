@@ -15,20 +15,20 @@ export const getIngredients = jest.fn()
 
 export const getRecipes = jest.fn()
   .mockImplementation(() => ([{
-    "id": 106,
-    "category": "recipe",
-    "hearts": "¾",
-    "name": "Baked Apple",
-    "notes": "Open flame.",
-    "resale": "0",
-    "type": "Restore Hearts",
-    "duration": null,
-    "strength": null,
-    "ingredient1": 2,
-    "ingredient2": null,
-    "ingredient3": null,
-    "ingredient4": null,
-    "ingredient5": null,
-    "created_at": "2018-04-09T20:52:52.577Z",
-    "updated_at": "2018-04-09T20:52:52.577Z"
+    id: 106,
+    category: 'recipe',
+    hearts: '¾',
+    name: 'Baked Apple',
+    notes: 'Open flame.',
+    resale: '0',
+    type: 'Restore Hearts',
+    duration: null,
+    strength: null,
+    ingredient1: 2,
+    ingredient2: null,
+    ingredient3: null,
+    ingredient4: null,
+    ingredient5: null,
+    created_at: '2018-04-09T20:52:52.577Z',
+    updated_at: '2018-04-09T20:52:52.577Z'
   }]))

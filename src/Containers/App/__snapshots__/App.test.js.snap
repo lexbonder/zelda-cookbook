@@ -11,7 +11,7 @@ exports[`App should match the snapshot 1`] = `
       id="small-zelda-header"
     />
   </header>
-  <SearchBar />
-  <RecipeContainer />
+  <Connect(SearchBar) />
+  <Connect(RecipeContainer) />
 </div>
 `;

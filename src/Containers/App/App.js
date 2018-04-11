@@ -9,6 +9,7 @@ import './App.css';
 // import { Route } from 'react-router-dom';
 
 export class App extends Component {
+  
   componentDidMount = async () => {
     try {
       const ingredients = await getIngredients();
