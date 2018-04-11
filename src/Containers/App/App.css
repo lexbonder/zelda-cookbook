@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box; }
+
+.App-header {
+  background: linear-gradient(to right, #1C3744 20%, #ddd0b6);
+  height: 150px;
+  width: 100vw;
+  padding: 20px;
+  z-index: -999; }
+
+#small-zelda-header {
+  background-image: url("../../assets/small-zelda-header.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%; }
+
+body {
+  background-image: url("../../assets/floral-old-paper-or-parchment.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0.75; }
