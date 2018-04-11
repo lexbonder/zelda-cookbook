@@ -12,13 +12,32 @@ export class RecipeContainer extends Component {
     }
   }
 
-  // recipes.filter( recipes => {
-  //   return selctedingredents.includes &&
-  //   selectedtype.includes &&
-  // })
+  filterRecipes = (allRecipes) => {
+    const { ingredients } = this.props.filter
+    let filtered = allRecipes;
+    if (ingredients.length) {
+      filtered = allRecipes.filter( recipe => {
+        let match = 0;
+        ingredients.forEach( ingredient => {
+          for (let i = 1; i <= 5; i++) {
+              console.log(typeof(ingredient.id))
+            if (parseInt(ingredient.id, 10) === recipe[`ingredient${i}_id`]) {
+              match++;
+            }
+          }
+        })
+        return match === ingredients.length;
+      })
+      // return filtered
+    } 
+//    else if (matches string in recipe search)
+//    else if (matches types selected in )
+// 
+      return filtered
+  }
 
   renderRecipes = () => {
-    const recipes = this.props.recipes
+    const recipes = this.filterRecipes(this.props.recipes)
 
     if(recipes.length > 0) {
       const recipesToRender = recipes.map(recipe => {
@@ -40,6 +59,8 @@ export class RecipeContainer extends Component {
         />
       })
       return recipesToRender
+    } else {
+      return <h1>No recipes match your search</h1>
     }
   }
 
@@ -52,6 +73,6 @@ export class RecipeContainer extends Component {
   }
 }
 
-export const MSTP = ({ recipes }) => ({ recipes })
+export const MSTP = ({ recipes, filter }) => ({ recipes, filter })
 
 export default connect(MSTP)(RecipeContainer);

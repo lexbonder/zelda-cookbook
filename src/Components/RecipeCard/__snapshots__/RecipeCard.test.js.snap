@@ -22,7 +22,6 @@ exports[`RecipeCard should match the snapshot 1`] = `
         <h2
           className="Baked Apple recipe-name"
         >
-          Name: 
           Baked Apple
         </h2>
         <h3
@@ -76,7 +75,7 @@ exports[`RecipeCard should match the snapshot 1`] = `
       <h3
         className="Baked Apple ingredient1"
       >
-        2
+        Apple
       </h3>
       <h3
         className="Baked Apple ingredient2"

@@ -1,4 +1,4 @@
-export const ingredientReducer = (state = [], action) => {
+const ingredientReducer = (state = [], action) => {
   switch (action.type) {
     case 'POPULATE_INGREDIENTS':
       return action.ingredients;
@@ -6,3 +6,5 @@ export const ingredientReducer = (state = [], action) => {
       return state;
   }
 }
+
+export default ingredientReducer;

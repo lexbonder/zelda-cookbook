@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { getRecipes, getIngredients } from '../../apiCalls';
-import { getIngredientNames } from '../../dataCleaner';
 import SearchBar from '../SearchBar/SearchBar';
 import RecipeContainer from '../RecipeContainer/RecipeContainer';
 import { populateRecipes, populateIngredients } from '../../actions';
@@ -32,6 +32,13 @@ export class App extends Component {
       </div>
     )
   }
+}
+
+const { func } = PropTypes;
+
+App.propTypes = {
+  populateRecipes: func,
+  populateIngredients: func
 }
 
 export const MDTP = dispatch => ({

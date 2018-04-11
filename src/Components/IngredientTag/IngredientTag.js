@@ -15,9 +15,9 @@ const IngredientTag = ({ id, name, remove }) => (
 const { number, string, func } = PropTypes;
 
 IngredientTag.propTypes = {
-  id: number.isRequired,
-  name: string.isRequired,
-  remove: func.isRequired,
+  id: number,
+  name: string,
+  remove: func,
 };
 
 export default IngredientTag;

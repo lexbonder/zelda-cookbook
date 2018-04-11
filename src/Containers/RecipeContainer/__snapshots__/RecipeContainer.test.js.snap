@@ -3,5 +3,9 @@
 exports[`RecipeContainer should match the snapshot 1`] = `
 <div
   id="all-recipe-container"
-/>
+>
+  <h1>
+    No recipes match your search
+  </h1>
+</div>
 `;

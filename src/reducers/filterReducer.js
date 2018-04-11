@@ -1,4 +1,4 @@
-export const filterReducer = (state = {ingredients: []}, action) => {
+const filterReducer = (state = {ingredients: []}, action) => {
   switch (action.type) {
     case 'ADD_INGREDIENT_FILTER':
       return {...state, ingredients: [...state.ingredients, action.ingredient]};
@@ -9,3 +9,5 @@ export const filterReducer = (state = {ingredients: []}, action) => {
       return state;
   }
 }
+
+export default filterReducer;

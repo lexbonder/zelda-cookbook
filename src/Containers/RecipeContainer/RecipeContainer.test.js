@@ -1,16 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RecipeContainer from './RecipeContainer';
-import { getRecipes } from '../apiCalls';
-// import { getRecipeData } from '../dataCleaner';
-
-jest.mock('../apiCalls')
+import { RecipeContainer } from './RecipeContainer';
 
 describe('RecipeContainer', () => {
   let wrapper;
+  let mockFilter = {ingredients: []}
+  let mockRecipes = []
 
   beforeEach(() => {
-    wrapper = shallow(<RecipeContainer />);
+    wrapper = shallow(<RecipeContainer
+      filter={mockFilter}
+      recipes={mockRecipes}
+    />);
   });
 
   it('should match the snapshot', () => {
