@@ -15,7 +15,7 @@ export class SearchBar extends Component {
       recipeButton: true,
       ingredientBar: false,
       recipeBar: true,
-      searchFocus: true,
+      searchFocus: false,
     };
   }
 

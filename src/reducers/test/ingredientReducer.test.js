@@ -1,3 +1,4 @@
+/* eslint-disable */
 import ingredientReducer from '../ingredientReducer';
 
 describe('ingredientReducer', () => {
