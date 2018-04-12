@@ -27,12 +27,12 @@ const RecipeCard = (props) => {
     if(targetArticle.className.includes('active-recipe')) {
       targetArticle.classList.remove('active-recipe')
     } else {
-      targetArticle.classList.add('active-recipe')      
+      targetArticle.classList.add('active-recipe')   
     }
   }
   
   return (
-    <div id="recipe-card-container">
+    <div className="recipe-card-container">
       <article id={ id } className={ name } onClick={clicked} >
 
         <div className={`${ name } recipe-details`}>

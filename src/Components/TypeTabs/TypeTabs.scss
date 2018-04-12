@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Serif:700");
+
+#small-zelda-header {
+  align-items: center;
+  display: flex;
+  font-family: 'PT Serif', serif;  
+  justify-content: flex-end; 
+  width: 80%;  
+}
+
+nav li {
+  background-color: #424640;
+  display: inline-block;
+  list-style-type: none;
+  width: 90px;
+  margin: 0 10px;
+  border-radius: 5px;
+  min-height: 60px;
+}
+
+nav a {
+  white-space: pre-wrap;
+  color: #E9E2C6;
+  display: block;
+  text-align: center;
+  padding: 10px 5px;
+}
+
+span {
+  display: block;
+}
