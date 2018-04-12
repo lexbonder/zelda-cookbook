@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from 'react';
 import './RecipeCard.css';
 import PropTypes from 'prop-types';
