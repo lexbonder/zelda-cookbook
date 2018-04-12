@@ -5,10 +5,13 @@
   flex-direction: column;
   justify-content: center;
   font-family: 'PT Serif', serif;
+  overflow-y: scroll;
+  height: 600px;
 }
 
-#recipe-card-container {
-  max-width: 490px;
+.recipe-card-container {
+  min-width: 558px;  
+  max-width: 558px;
   margin: 10px auto;
   border-radius: 10px;
   background-color: #58625E;

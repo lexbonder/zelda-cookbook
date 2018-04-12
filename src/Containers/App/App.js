@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { getRecipes, getIngredients } from '../../apiCalls';
 import SearchBar from '../SearchBar/SearchBar';
 import RecipeContainer from '../RecipeContainer/RecipeContainer';
+import TypeTabs from '../../Components/TypeTabs/TypeTabs';
 import { populateRecipes, populateIngredients } from '../../actions';
 import './App.css';
 // import { Route } from 'react-router-dom';
@@ -25,7 +26,9 @@ export class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div id="small-zelda-header" />
+          <div id="small-zelda-header">
+            <TypeTabs />
+          </div>
         </header>
         <SearchBar />
         <RecipeContainer />

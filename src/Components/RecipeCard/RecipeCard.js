@@ -33,7 +33,7 @@ const RecipeCard = (props) => {
   };
   
   return (
-    <div id="recipe-card-container">
+    <div className="recipe-card-container">
       <article id={ id } className={ name } onClick={clicked} >
 
         <div className={`${ name } recipe-details`}>
