@@ -10,16 +10,16 @@ import './App.css';
 
 export class App extends Component {
   
-  componentDidMount = async () => {
-    try {
-      const ingredients = await getIngredients();
-      const recipes = await getRecipes();
-      this.props.populateRecipes(recipes);
-      this.props.populateIngredients(ingredients);
-    } catch (error) {
-      throw Error(error)
-    }
-  }
+  // componentDidMount = async () => {
+  //   try {
+  //     const ingredients = await getIngredients();
+  //     const recipes = await getRecipes();
+  //     this.props.populateRecipes(recipes);
+  //     this.props.populateIngredients(ingredients);
+  //   } catch (error) {
+  //     throw Error(error)
+  //   }
+  // }
 
   render(){
     return (

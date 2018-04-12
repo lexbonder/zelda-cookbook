@@ -1,3 +1,4 @@
+/* eslint-disable */
 import recipeReducer from '../recipeReducer';
 
 describe('recipeReducer', () => {
