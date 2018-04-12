@@ -4,3 +4,11 @@ node_js:
 script:
 - npm test
 - npm run build
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  app: zelda-cookbook
+  skip-cleanup: true
+  api_key:
+    secure: EyFrthBF4T0FuHw/zBrnDEm//sDpecWif4lrvSag22q/RmR7r6iI3SFS+c+susclOTTpe9+Tiq4o5R+cdd4qwsyGVI2OV2U9GRKIilhrQyuzUYaVVy8HteGGqkoUVCMRSjtWqp7VDGfi7KN0hYj46sQvNpC28D4zhMaRqd3MYigie3ejTt/bomuqjONhlPVaxfMoFxHwDi5Q71K3GeI2unO5/YC9fpG43GWjfc10JS9kvOYsT7/Ys2dPob2HyM5/gp4bgkpWVMBXXtTxhL0m1uaLEV+a1kBAwPZipGpQXAaAJbaQJXPwsnay5JBv2B4EBmcEp+bC6TBsV+VczO5+kWjIdXyjpb/iThDTitZIt7mJWAnEPIZiVOavG5ndR3tdf9p/PGn/9icboUvhzj9H9ovH8W6+ZrlVolkladjLZExrb7Ik0Gq/KgQazVOhmBVf4QA+UMUsKdhFwIXNzOwVAGqDZmV/BfABL/ToBpNgSr6juat6DmV4KyywXzdbxYBZkgUMWTOD2r7sNKkCFySlpTOA9tALPB2qgyFPdbNpEXdVusq0+knUSQhDqPNVn+wFBuJDIm81FKhxiwOcL5LcnVcHekPaj3ydVcJmVV/p4LT7d/wfRRswz96ZcjwwyeYqVlLq0Qg83Le0fi4r4dAVELonim1nWlQWWpXOu11oas8=
