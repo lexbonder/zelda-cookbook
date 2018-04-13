@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getIngredientNames } from '../../dataCleaner';
 import IngredientTag from '../../Components/IngredientTag/IngredientTag';
-import { addIngredientFilter, removeIngredientFilter } from '../../actions';
 import './SearchBar.css';
+import {
+  addIngredientFilter,
+  removeIngredientFilter,
+  updateNameFilter
+} from '../../actions';
+
+// this seems real gross, and i'd like to change it, but it works for now.
+let timeout;
 
 export class SearchBar extends Component {
   constructor(props) {
@@ -22,6 +30,12 @@ export class SearchBar extends Component {
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+    if (name === 'recipeSearch') {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        this.props.updateNameFilter(value);
+      }, 500);
+    }
   }
 
   handleClick = event => {
@@ -31,29 +45,29 @@ export class SearchBar extends Component {
   }
 
   toggleSearchBar = id => {
-    const { ingredientBar, recipeBar } = this.state
+    const { ingredientBar, recipeBar } = this.state;
     if (this.state[`${id}Bar`] === false) {
       this.setState({
         ingredientBar: !ingredientBar,
         recipeBar: !recipeBar,
         ingredientSearch: '',
         recipeSearch: ''
-      })
+      });
     }
   }
 
   toggleSearchButton = id => {
-    const { ingredientButton, recipeButton } = this.state
+    const { ingredientButton, recipeButton } = this.state;
     if (this.state[`${id}Button`] === false) {
       this.setState({
         ingredientButton: !ingredientButton,
         recipeButton: !recipeButton
-      })
+      });
     }
   }
 
   ingredientListToRender = () => {
-    const ingredientNames = getIngredientNames(this.props.ingredients)
+    const ingredientNames = getIngredientNames(this.props.ingredients);
     return ingredientNames
       .filter(food => food.name.toLowerCase().includes(
         this.state.ingredientSearch.toLowerCase())
@@ -65,42 +79,42 @@ export class SearchBar extends Component {
         onClick={this.selectIngredient}
       >
         {food.name}
-      </p>)
+      </p>);
   }
 
   selectIngredient = (event) => {
-    const { ingredients } = this.props.filter;
+    const { ingredientFilter } = this.props;
     const { innerText , id } = event.target;
     const newIngredient = { id, name: innerText };
-    const checkDupe = ingredients.some(tag => tag.name === newIngredient.name)
-    if ( !checkDupe && ingredients.length < 5 ) {
-      this.props.addIngredientFilter(newIngredient)
+    const checkDupe = ingredientFilter.some(tag => tag.name === newIngredient.name);
+    if ( !checkDupe && ingredientFilter.length < 5 ) {
+      this.props.addIngredientFilter(newIngredient);
     }
-    this.setState({ searchFocus: false, ingredientSearch: '' })
+    this.setState({ searchFocus: false, ingredientSearch: '' });
   }
 
   handleFocus = () => {
-    this.setState({ searchFocus: true })
+    this.setState({ searchFocus: true });
   }
 
   handleBlur = () => {
     setTimeout(() => {
-      this.setState({ searchFocus: false })
-    }, 150)
+      this.setState({ searchFocus: false });
+    }, 150);
   }
 
   tagsToRender = () => {
-    const { ingredients } = this.props.filter;
-    return ingredients.map(tag => <IngredientTag
+    const { ingredientFilter } = this.props;
+    return ingredientFilter.map(tag => <IngredientTag
       {...tag}
       key={tag.id}
       remove={this.removeIngredient}
-    />)
+    />);
   }
 
   removeIngredient = (event) => {
     const { id } = event.target;
-    this.props.removeIngredientFilter(id)
+    this.props.removeIngredientFilter(id);
   }
   
   render() {
@@ -130,7 +144,7 @@ export class SearchBar extends Component {
             onClick={this.handleClick}
             id="recipe"
           >
-            Recipe
+          Recipe
           </button>
           <input
             type="text"
@@ -160,14 +174,10 @@ export class SearchBar extends Component {
               `}
               onChange={this.handleChange}
             />
-            <section
-              className={`search-results__container
-                ${this.state.searchFocus ?
-                  'search-results__containter--show' :
-                  ''
-                }
-              `}
-            >
+            <section className={`
+              search-results__container
+              ${this.state.searchFocus ? 'search-results__containter--show' : ''}
+            `}>
               {this.ingredientListToRender()}
             </section>
           </div>
@@ -180,14 +190,28 @@ export class SearchBar extends Component {
   }
 }
 
-export const MSTP = ({ingredients, filter}) => ({
+const { arrayOf, shape, string, number, array, func } = PropTypes;
+
+SearchBar.propTypes = {
+  ingredients: arrayOf(shape({
+    name: string,
+    id: number
+  })),
+  ingredientFilter: array,
+  addIngredientFilter: func,
+  removeIngredientFilter: func,
+  updateNameFilter: func
+};
+
+export const MSTP = ({ingredients, ingredientFilter}) => ({
   ingredients,
-  filter
+  ingredientFilter
 });
 
 export const MDTP = dispatch => ({
   addIngredientFilter: ingredient => dispatch(addIngredientFilter(ingredient)),
-  removeIngredientFilter: id => dispatch(removeIngredientFilter(id))
-})
+  removeIngredientFilter: id => dispatch(removeIngredientFilter(id)),
+  updateNameFilter: name => dispatch(updateNameFilter(name))
+});
 
 export default connect(MSTP, MDTP)(SearchBar);

@@ -66,9 +66,10 @@ exports[`SearchBar should match the snapshot 1`] = `
         value=""
       />
       <section
-        className="search-results__container
-                      search-results__containter--show
-                    "
+        className="
+                    search-results__container
+                    
+                  "
       >
         <p
           className="search-results__item"
@@ -90,27 +91,27 @@ exports[`SearchBar should match the snapshot 1`] = `
 exports[`SearchBar tagsToRender should return tags depending on what is in the filters ingredients array 1`] = `
 Array [
   <IngredientTag
-    id={0}
+    id="0"
     name="Chicken"
     remove={[Function]}
 />,
   <IngredientTag
-    id={2}
+    id="2"
     name="Grape"
     remove={[Function]}
 />,
   <IngredientTag
-    id={3}
+    id="3"
     name="Pear"
     remove={[Function]}
 />,
   <IngredientTag
-    id={4}
+    id="4"
     name="Fish"
     remove={[Function]}
 />,
   <IngredientTag
-    id={5}
+    id="5"
     name="Tuna"
     remove={[Function]}
 />,

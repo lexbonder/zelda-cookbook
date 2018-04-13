@@ -28,3 +28,8 @@ export const removeIngredientFilter = id => ({
   type: 'REMOVE_INGREDIENT_FILTER',
   id
 })
+
+export const updateNameFilter = name => ({
+  type: 'UPDATE_NAME_FILTER',
+  name
+})
