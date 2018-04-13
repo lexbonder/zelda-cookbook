@@ -1,8 +1,9 @@
+// eslint-disable-next-line
 import React from 'react';
 import './RecipeCard.css';
 import PropTypes from 'prop-types';
-import greenRupee from '../../assets/GreenRupee.png'
-import seafoodCurry from '../../assets/Seafoodcurry.jpg'
+import greenRupee from '../../assets/GreenRupee.png';
+import seafoodCurry from '../../assets/Seafoodcurry.jpg';
 
 const RecipeCard = (props) => {
   const {
@@ -22,14 +23,14 @@ const RecipeCard = (props) => {
   } = props;
 
   const clicked = (e) => {
-    const recipeTarget = e.target
-    const targetArticle = recipeTarget.closest('article')
+    const recipeTarget = e.target;
+    const targetArticle = recipeTarget.closest('article');
     if(targetArticle.className.includes('active-recipe')) {
-      targetArticle.classList.remove('active-recipe')
+      targetArticle.classList.remove('active-recipe');
     } else {
-      targetArticle.classList.add('active-recipe')   
+      targetArticle.classList.add('active-recipe');  
     }
-  }
+  };
   
   return (
     <div className="recipe-card-container">
@@ -61,8 +62,8 @@ const RecipeCard = (props) => {
         </div>
       </article>
     </div>
-  )
-}
+  );
+};
 
 const { number, string, func } = PropTypes;
 
@@ -86,6 +87,6 @@ RecipeCard.propTypes = {
   strength: string, 
   resale: string,
   clicked: func
-}
+};
 
 export default RecipeCard;
