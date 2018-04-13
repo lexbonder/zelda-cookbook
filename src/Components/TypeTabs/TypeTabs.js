@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { populateRecipes } from '../../actions'
+import { selectedRecipes, populateRecipes } from '../../actions'
 // import PropTypes from 'prop-types';
 import './TypeTabs.css';
 
@@ -11,13 +11,14 @@ export class TypeTabs extends Component {
 
   tabClicked = (e) => {
     const effect = e.target.id.replace('-', ' ')
-    const allRecipes = this.props.recipes
+    this.props.selectedRecipes(effect)
+    // const allRecipes = this.props.recipes
     
-    const matchingRecipes = allRecipes.filter(recipe => {
-      let lowerCaseType = recipe.type.toLowerCase()
-      return lowerCaseType.includes(effect)
-    })
-    this.props.populateRecipes(matchingRecipes);
+    // const matchingRecipes = allRecipes.filter(recipe => {
+    //   let lowerCaseType = recipe.type.toLowerCase()
+    //   return lowerCaseType.includes(effect)
+    // })
+    // this.props.populateRecipes(matchingRecipes);
   }
 
   render() {
@@ -41,12 +42,13 @@ export class TypeTabs extends Component {
   } 
 }
 
-export const MSTP = ({ recipes }) => ({
-  recipes
-})
+// export const MSTP = ({ recipes }) => ({
+//   recipes
+// })
 
 export const MDTP = dispatch => ({
-  populateRecipes: matchingRecipes => dispatch(populateRecipes(matchingRecipes))
+  // populateRecipes: matchingRecipes => dispatch(populateRecipes(matchingRecipes))
+  selectedRecipes: effect => dispatch(selectedRecipes(effect))  
 })
 
 export default connect(MSTP, MDTP)(TypeTabs)
