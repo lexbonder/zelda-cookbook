@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { getRecipes, getIngredients } from '../../apiCalls';
 import SearchBar from '../SearchBar/SearchBar';
 import RecipeContainer from '../RecipeContainer/RecipeContainer';
@@ -17,7 +17,7 @@ export class App extends Component {
       this.props.populateRecipes(recipes);
       this.props.populateIngredients(ingredients);
     } catch (error) {
-      throw Error(error)
+      throw Error(error);
     }
   }
 
@@ -30,7 +30,7 @@ export class App extends Component {
         <SearchBar />
         <RecipeContainer />
       </div>
-    )
+    );
   }
 }
 
@@ -39,11 +39,11 @@ const { func } = PropTypes;
 App.propTypes = {
   populateRecipes: func,
   populateIngredients: func
-}
+};
 
 export const MDTP = dispatch => ({
   populateRecipes: recipes => dispatch(populateRecipes(recipes)),
   populateIngredients: ingredients => dispatch(populateIngredients(ingredients))
-})
+});
 
 export default connect(null, MDTP)(App);

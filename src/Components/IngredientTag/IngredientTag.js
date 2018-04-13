@@ -13,10 +13,10 @@ const IngredientTag = ({ id, name, remove }) => (
   </h1>
 );
 
-const { number, string, func } = PropTypes;
+const { string, func } = PropTypes;
 
 IngredientTag.propTypes = {
-  id: number,
+  id: string,
   name: string,
   remove: func,
 };

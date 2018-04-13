@@ -5,7 +5,7 @@ import IngredientTag from './IngredientTag';
 
 describe('IngredientTag', () => {
   let wrapper;
-  let mockId = 1;
+  let mockId = '1';
   let mockName = 'Apple'
   let mockRemove = jest.fn()
 

@@ -24,11 +24,16 @@ export const getRecipes = jest.fn()
     type: 'Restore Hearts',
     duration: null,
     strength: null,
-    ingredient1: 2,
+    ingredient1: 'Apple',
     ingredient2: null,
     ingredient3: null,
     ingredient4: null,
     ingredient5: null,
+    ingredient1_id: 2,
+    ingredient2_id: null,
+    ingredient3_id: null,
+    ingredient4_id: null,
+    ingredient5_id: null,
     created_at: '2018-04-09T20:52:52.577Z',
     updated_at: '2018-04-09T20:52:52.577Z'
   }]))

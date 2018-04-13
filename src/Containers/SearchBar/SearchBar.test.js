@@ -2,8 +2,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { SearchBar, MSTP, MDTP } from './SearchBar';
-import { addIngredientFilter, removeIngredientFilter } from '../../actions';
 import * as dataCleaner from '../../dataCleaner';
+import {
+  addIngredientFilter,
+  removeIngredientFilter,
+  updateNameFilter
+} from '../../actions';
 
 jest.mock('../../dataCleaner')
 jest.useFakeTimers();
@@ -11,16 +15,18 @@ jest.useFakeTimers();
 describe('SearchBar', () => {
   let wrapper;
   let mockIngredients = []
-  let mockFilter = {ingredients: []}
+  let mockIngredientFilter = []
   let mockAddIngredientFilter = jest.fn()
   let mockRemoveIngredientFilter = jest.fn()
+  let mockUpdateNameFilter = jest.fn()
   
   beforeEach(() => {
     wrapper = shallow(<SearchBar
       ingredients={ mockIngredients }
-      filter = { mockFilter }
+      ingredientFilter = { mockIngredientFilter }
       addIngredientFilter = { mockAddIngredientFilter }
       removeIngredientFilter = { mockRemoveIngredientFilter }
+      updateNameFilter = { mockUpdateNameFilter }
     />);
   });
 
@@ -32,7 +38,7 @@ describe('SearchBar', () => {
       recipeButton: true,
       ingredientBar: false,
       recipeBar: true,
-      searchFocus: true,
+      searchFocus: false,
     };
 
     expect(wrapper.state()).toEqual(expected);
@@ -58,6 +64,16 @@ describe('SearchBar', () => {
       wrapper.instance().handleChange(event2);
       expect(wrapper.state().ingredientSearch).toEqual('qwerty');
     });
+
+    it('should wait until the user is finished typing, then call updateNameFilter with the value in recipeSearch', () => {
+      const event = { target: { 
+        name: 'recipeSearch',
+        value: 'Pie'
+      }};
+      wrapper.instance().handleChange(event)
+      jest.runAllTimers()
+      expect(mockUpdateNameFilter).toHaveBeenCalledWith('Pie')
+    })
   });
 
   describe('handleClick', () => {
@@ -104,12 +120,13 @@ describe('SearchBar', () => {
     it('should not call addIngredientFilter if the object is already selected', () => {
       wrapper = shallow(<SearchBar
         ingredients={ mockIngredients }
-        filter = { {ingredients: [{id: 1, name: 'Apple'}]} }
+        ingredientFilter = { [{id: '1', name: 'Apple'}] }
         addIngredientFilter = { mockAddIngredientFilter }
         removeIngredientFilter = { mockRemoveIngredientFilter }
+        updateNameFilter = { mockUpdateNameFilter }
       />)
 
-      const mockEvent = { target: {id: 1, innerText: 'Apple'}}
+      const mockEvent = { target: {id: '1', innerText: 'Apple'}}
       wrapper.instance().selectIngredient(mockEvent)
       expect(mockAddIngredientFilter).not.toHaveBeenCalled()
     });
@@ -117,19 +134,20 @@ describe('SearchBar', () => {
     it('should not call addIngredientFilter if there are 5 ingredients already', () => {
       wrapper = shallow(<SearchBar
         ingredients={ mockIngredients }
-        filter = {{ ingredients: [
-          {id: 0, name: 'Chicken'},
-          {id: 2, name: 'Grape'},
-          {id: 3, name: 'Pear'},
-          {id: 4, name: 'Fish'},
-          {id: 5, name: 'Tuna'}
-        ]}}
+        ingredientFilter = {[
+          {id: '0', name: 'Chicken'},
+          {id: '2', name: 'Grape'},
+          {id: '3', name: 'Pear'},
+          {id: '4', name: 'Fish'},
+          {id: '5', name: 'Tuna'}
+        ]}
         addIngredientFilter = { mockAddIngredientFilter }
         removeIngredientFilter = { mockRemoveIngredientFilter }
+        updateNameFilter = { mockUpdateNameFilter }
       />)
       const mockEvent = { 
         target: {
-          id: 1, innerText: 'Apple'
+          id: '1', innerText: 'Apple'
         }
       }
       wrapper.instance().selectIngredient(mockEvent)
@@ -137,8 +155,8 @@ describe('SearchBar', () => {
     });
 
     it('should call this.props.addIngredientFilter with a new ingredient', () => {
-      const mockEvent = { target: {id: 1, innerText: 'Apple'}}
-      const expected = {id: 1, name: 'Apple'}
+      const mockEvent = { target: {id: '1', innerText: 'Apple'}}
+      const expected = {id: '1', name: 'Apple'}
       wrapper.instance().selectIngredient(mockEvent)
       expect(mockAddIngredientFilter).toHaveBeenCalledWith(expected)
     });
@@ -164,15 +182,16 @@ describe('SearchBar', () => {
     it('should return tags depending on what is in the filters ingredients array', () => {
       wrapper = shallow(<SearchBar
         ingredients={ mockIngredients }
-        filter = {{ ingredients: [
-          {id: 0, name: 'Chicken'},
-          {id: 2, name: 'Grape'},
-          {id: 3, name: 'Pear'},
-          {id: 4, name: 'Fish'},
-          {id: 5, name: 'Tuna'}
-        ]}}
+        ingredientFilter = {[
+          {id: '0', name: 'Chicken'},
+          {id: '2', name: 'Grape'},
+          {id: '3', name: 'Pear'},
+          {id: '4', name: 'Fish'},
+          {id: '5', name: 'Tuna'}
+        ]}
         addIngredientFilter = { mockAddIngredientFilter }
         removeIngredientFilter = { mockRemoveIngredientFilter }
+        updateNameFilter = { mockUpdateNameFilter }
       />)
       expect(wrapper.instance().tagsToRender()).toMatchSnapshot()
     });
@@ -191,37 +210,37 @@ describe('SearchBar', () => {
     it('should return an object with with ingredients and a filter object', () => {
       const mockState = {
         ingredients: [{
-          id: 1,
+          id: '1',
           name: 'Apple',
         }],
-        filter: {
-          ingredients: []
-        }
+        ingredientFilter: []
       }
-      const mapped = MSTP(mockState)
+      const mapped = MSTP(mockState);
 
       expect(mapped.ingredients).toEqual([{
-        id: 1,
+        id: '1',
         name: 'Apple',
       }]);
-      expect(mapped.filter).toEqual({
-        ingredients: []
-      });
+      expect(mapped.ingredientFilter).toEqual([]);
     });
   });
 
   describe('MDTP', () => {
     it('should call dispatch when addIngredientFilter or removeIngredientFilter are called', () => {
       const mockDispatch = jest.fn();
-      const mockIngredient = { id: 1, name: 'Apple' };
+      const mockIngredient = { id: '1', name: 'Apple' };
       const mockId = 1;
       const result = MDTP(mockDispatch);
+      const mockName = 'Pie'
 
       result.addIngredientFilter(mockIngredient);
       expect(mockDispatch).toHaveBeenCalledWith(addIngredientFilter(mockIngredient));
 
       result.removeIngredientFilter(mockId);
       expect(mockDispatch).toHaveBeenCalledWith(removeIngredientFilter(mockId));
+
+      result.updateNameFilter(mockName);
+      expect(mockDispatch).toHaveBeenCalledWith(updateNameFilter(mockName));
     });
   });
 });
