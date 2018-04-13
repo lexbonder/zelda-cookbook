@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectedRecipes } from '../../actions'
+import { addTypeFilter } from '../../actions'
 // import PropTypes from 'prop-types';
 import './TypeTabs.css';
 
 export class TypeTabs extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
   }
 
   selectedType = () => {
@@ -37,7 +37,7 @@ export class TypeTabs extends Component {
 }
 
 export const MDTP = dispatch => ({
-  selectedRecipes: effect => dispatch(selectedRecipes(effect))  
+  addTypeFilter: effect => dispatch(addTypeFilter(effect))  
 })
 
 export default connect(null, MDTP)(TypeTabs)

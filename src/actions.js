@@ -1,6 +1,6 @@
 // Recipes =================
 
-export const populateRecipes = (recipes) => ({
+export const populateRecipes = recipes => ({
   type: 'POPULATE_RECIPES',
   recipes
 })
@@ -12,7 +12,7 @@ export const selectedRecipes = (recipeType) => ({
 
 // Ingredients =============
 
-export const populateIngredients = (ingredients) => ({
+export const populateIngredients = ingredients => ({
   type: 'POPULATE_INGREDIENTS',
   ingredients
 })
@@ -32,4 +32,9 @@ export const removeIngredientFilter = id => ({
 export const updateNameFilter = name => ({
   type: 'UPDATE_NAME_FILTER',
   name
+})
+
+export const addTypeFilter = recipeType => ({
+  type: 'ADD_TYPE_FILTER',
+  recipeType
 })

@@ -150,4 +150,10 @@ describe('RecipeContainer', () => {
       }])
     })
   })
+
+  describe('filterByType', () => {
+    it('should return all ingredients if there is no filter applied', () => {
+      expect(wrapper.instance().filterByType(mockRecipes)).toEqual(mockRecipes);
+    })
+  })
 });

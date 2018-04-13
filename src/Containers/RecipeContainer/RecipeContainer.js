@@ -45,11 +45,18 @@ export class RecipeContainer extends Component {
     }
   }
 
+  filterByType = recipes => {
+    return recipes
+  }
+
   filterRecipes = (allRecipes) => {
     const onceFiltered = this.filterByIngredient(allRecipes);
     const twiceFiltered = this.filterByName(onceFiltered);
-    return twiceFiltered;
+    const thriceFiltered = this.filterByType(twiceFiltered);
+    return thriceFiltered;
   }
+
+  filterByType
 
   renderRecipes = () => {
     const recipes = this.filterRecipes(this.props.recipes);

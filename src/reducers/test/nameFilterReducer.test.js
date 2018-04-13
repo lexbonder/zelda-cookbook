@@ -6,7 +6,7 @@ describe('nameFilterReducer', () => {
     expect(nameFilterReducer(undefined, {})).toEqual('')
   })
 
-  it('should update the name key when the time is UPDATE_NAME_FILTER', () => {
+  it('should update the name when the time is UPDATE_NAME_FILTER', () => {
     const mockAction = {
       type: 'UPDATE_NAME_FILTER',
       name: 'Pie'
