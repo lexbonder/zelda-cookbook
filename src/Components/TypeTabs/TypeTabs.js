@@ -17,7 +17,7 @@ export class TypeTabs extends Component {
       let lowerCaseType = recipe.type.toLowerCase()
       return lowerCaseType.includes(effect)
     })
-    this.props.populateRecipes(matchingRecipes)
+    this.props.populateRecipes(matchingRecipes);
   }
 
   render() {
