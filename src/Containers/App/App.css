@@ -1,19 +1,32 @@
 * {
   box-sizing: border-box; }
 
+.App {
+  display: grid;
+  grid-template-columns: 20% auto;
+  grid-template-rows: 20% 20% 20% auto; }
+
 .sidebar {
-  background: linear-gradient(to right, #1C3744 20%, #ddd0b6);
-  height: 150px;
-  width: 100vw;
-  padding: 20px;
-  z-index: -999; }
+  background: linear-gradient(to bottom, #1C3744 20%, #ddd0b6);
+  height: 100vh;
+  padding: 20px; }
 
 #small-zelda-header {
   background-image: url("../../assets/small-zelda-header.png");
   background-size: contain;
   background-repeat: no-repeat;
-  height: 100%;
-  width: 100%; }
+  height: 200px; }
+
+#search-container {
+  align-items: stretch;
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: 80% auto;
+  grid-template-rows: 1fr 1fr 1fr; }
+
+#dropDown {
+  grid-row-start: 2;
+  justify-self: stretch; }
 
 body {
   background-image: url("../../assets/floral-old-paper-or-parchment.jpg");

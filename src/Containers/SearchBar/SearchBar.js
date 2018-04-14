@@ -19,9 +19,9 @@ export class SearchBar extends Component {
     this.state = {
       ingredientSearch: '',
       recipeSearch: '',
-      ingredientButton: false,
+      ingredientButton: true,
       recipeButton: true,
-      ingredientBar: false,
+      ingredientBar: true,
       recipeBar: true,
       searchFocus: false,
     };
