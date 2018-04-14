@@ -5,11 +5,6 @@ export const populateRecipes = recipes => ({
   recipes
 })
 
-export const selectedRecipes = (recipeType) => ({
-  type: 'SELECTED_RECIPES',
-  recipeType
-})
-
 // Ingredients =============
 
 export const populateIngredients = ingredients => ({

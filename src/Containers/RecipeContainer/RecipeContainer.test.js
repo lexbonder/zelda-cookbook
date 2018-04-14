@@ -7,10 +7,12 @@ describe('RecipeContainer', () => {
   let wrapper;
   let mockIngredientFilter = []
   let mockNameFilter = ''
+  let mockTypeFilter = ''
   let mockRecipes = [
     {
       id: 1,
       name: 'Baked Apple',
+      type: 'none',
       ingredient1: 'Apple',
       ingredient2: null,
       ingredient3: null,
@@ -26,6 +28,7 @@ describe('RecipeContainer', () => {
       id: 2, 
       name: 'Apple Pie',
       ingredient1: 'Apple',
+      type: 'Restore Hearts',
       ingredient2: 'Tabantha Wheat',
       ingredient3: 'Cane Sugar',
       ingredient4: 'Goat Butter',
@@ -42,6 +45,7 @@ describe('RecipeContainer', () => {
     wrapper = shallow(<RecipeContainer
       ingredientFilter={mockIngredientFilter}
       nameFilter={mockNameFilter}
+      typeFilter={mockTypeFilter}
       recipes={mockRecipes}
     />);
   });
@@ -63,6 +67,7 @@ describe('RecipeContainer', () => {
       const wrapper = shallow(<RecipeContainer
         ingredientFilter={[{name: 'Tabantha Wheat', id: '3'}]}
         nameFilter={mockNameFilter}
+        typeFilter={mockTypeFilter}
         recipes={mockRecipes}
       />);
       
@@ -73,6 +78,7 @@ describe('RecipeContainer', () => {
       ).toEqual([{
         id: 2,
         name: 'Apple Pie',
+        type: 'Restore Hearts',
         ingredient1: 'Apple',
         ingredient2: 'Tabantha Wheat',
         ingredient3: 'Cane Sugar',
@@ -100,6 +106,7 @@ describe('RecipeContainer', () => {
       const wrapper = shallow(<RecipeContainer
         ingredientFilter={mockIngredientFilter}
         nameFilter={'Pie'}
+        typeFilter={mockTypeFilter}
         recipes={mockRecipes}
       />);
 
@@ -110,6 +117,7 @@ describe('RecipeContainer', () => {
       ).toEqual([{
         id: 2,
         name: 'Apple Pie',
+        type: 'Restore Hearts',
         ingredient1: 'Apple',
         ingredient2: 'Tabantha Wheat',
         ingredient3: 'Cane Sugar',
@@ -127,6 +135,7 @@ describe('RecipeContainer', () => {
       const wrapper = shallow(<RecipeContainer
         ingredientFilter={mockIngredientFilter}
         nameFilter={'pIE'}
+        typeFilter={mockTypeFilter}
         recipes={mockRecipes}
       />);
 
@@ -137,6 +146,7 @@ describe('RecipeContainer', () => {
       ).toEqual([{
         id: 2,
         name: 'Apple Pie',
+        type: 'Restore Hearts',
         ingredient1: 'Apple',
         ingredient2: 'Tabantha Wheat',
         ingredient3: 'Cane Sugar',
@@ -154,6 +164,31 @@ describe('RecipeContainer', () => {
   describe('filterByType', () => {
     it('should return all ingredients if there is no filter applied', () => {
       expect(wrapper.instance().filterByType(mockRecipes)).toEqual(mockRecipes);
+    })
+
+    it('should return an array of ingredients that match the type filter', () => {
+      const wrapper = shallow(<RecipeContainer
+        ingredientFilter={mockIngredientFilter}
+        nameFilter={mockNameFilter}
+        typeFilter={'Restore Hearts'}
+        recipes={mockRecipes}
+      />);
+
+      expect(wrapper.instance().filterByType(mockRecipes)).toEqual([{
+        id: 2,
+        name: 'Apple Pie',
+        type: 'Restore Hearts',
+        ingredient1: 'Apple',
+        ingredient2: 'Tabantha Wheat',
+        ingredient3: 'Cane Sugar',
+        ingredient4: 'Goat Butter',
+        ingredient5: null,
+        ingredient1_id: 2,
+        ingredient2_id: 3,
+        ingredient3_id: 4,
+        ingredient4_id: 5,
+        ingredient5_id: null,
+      }])
     })
   })
 });

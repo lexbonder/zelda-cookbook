@@ -4,16 +4,16 @@ exports[`App should match the snapshot 1`] = `
 <div
   className="App"
 >
-  <header
+  <aside
     className="sidebar"
   >
-    <div
+    <section
       id="small-zelda-header"
     >
       <Connect(TypeTabs) />
-    </div>
-  </header>
-  <Connect(SearchBar) />
+      <Connect(SearchBar) />
+    </section>
+  </aside>
   <Connect(RecipeContainer) />
 </div>
 `;

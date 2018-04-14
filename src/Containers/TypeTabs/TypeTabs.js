@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addTypeFilter } from '../../actions'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './TypeTabs.css';
 
 export class TypeTabs extends Component {
@@ -9,11 +9,9 @@ export class TypeTabs extends Component {
     super(props);
   }
 
-  selectedType = () => {
-    const element = document.getElementById("dropDown");
-    const effect = element.options[element.selectedIndex].value
-    console.log(effect)
-    this.props.selectedRecipes(effect)
+  selectedType = (event) => {
+    const effect = event.target.value
+    this.props.addTypeFilter(effect)
   }
 
   render() {
@@ -35,6 +33,12 @@ export class TypeTabs extends Component {
     )
   } 
 }
+
+const { func } = PropTypes;
+
+TypeTabs.propTypes = {
+  addTypeFilter: func
+};
 
 export const MDTP = dispatch => ({
   addTypeFilter: effect => dispatch(addTypeFilter(effect))  

@@ -13,6 +13,7 @@ exports[`RecipeContainer should match the snapshot 1`] = `
     ingredient5={null}
     key="1"
     name="Baked Apple"
+    type="none"
   />
   <RecipeCard
     id={2}
@@ -23,6 +24,7 @@ exports[`RecipeContainer should match the snapshot 1`] = `
     ingredient5={null}
     key="2"
     name="Apple Pie"
+    type="Restore Hearts"
   />
 </div>
 `;
