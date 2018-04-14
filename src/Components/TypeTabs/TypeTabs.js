@@ -9,28 +9,29 @@ export class TypeTabs extends Component {
     super()
   }
 
-  tabClicked = (e) => {
-    const effect = e.target.id.replace('-', ' ')
+  selectedType = () => {
+    const element = document.getElementById("dropDown");
+    const effect = element.options[element.selectedIndex].value
+    console.log(effect)
     this.props.selectedRecipes(effect)
   }
 
   render() {
     return (
-      <nav onClick={(e) => this.tabClicked(e)} >
-        <ul>
-        <li><a id="restore-hearts">Restore Hearts</a></li>
-        <li><a id="stamina">Restore Stamina</a></li>
-        <li><a id="cold">Cold Resist</a></li>
-        <li><a id="heat">Heat Resist</a></li>
-        <li><a id="electric">Electric Resist</a></li>
-        <li><a id="speed">Movement Speed</a></li>
-        <li><a id="temp">Temp Max Hearts</a></li>
-        <li><a id="defense">Defense Boost</a></li>
-        <li><a id="attack">Attack Power</a></li>
-        <li><a id="stealth">Stealth Recipes</a></li>
-        <li><a id="elixer">Elixer Recipes</a></li>
-        </ul>
-      </nav>
+      <select onChange={ this.selectedType } id="dropDown">
+        <option>Choose Recipe Type</option>
+        <option>Restore Hearts</option>
+        <option>Restore Stamina</option>
+        <option>Cold Resist</option>
+        <option>Heat Resist</option>
+        <option>Electric Resist</option>
+        <option>Movement Speed</option>
+        <option>Temporary Max Hearts</option>
+        <option>Defense Boost</option>
+        <option>Attack Power</option>
+        <option>Stealth</option>
+        <option>Elixers</option>
+      </select>
     )
   } 
 }

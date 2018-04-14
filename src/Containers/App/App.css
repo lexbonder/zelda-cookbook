@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box; }
 
-.App-header {
+.sidebar {
   background: linear-gradient(to right, #1C3744 20%, #ddd0b6);
   height: 150px;
   width: 100vw;
