@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 import './TypeTabs.css';
 
 export class TypeTabs extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   selectedType = (event) => {
     const effect = event.target.value;
