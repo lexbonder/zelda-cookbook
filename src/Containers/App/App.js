@@ -25,12 +25,12 @@ export class App extends Component {
   render(){
     return (
       <div className="App">
-        <header className="App-header">
-          <div id="small-zelda-header">
+        <aside className="sidebar">
+          <section id="small-zelda-header">
             <TypeTabs />
-          </div>
-        </header>
-        <SearchBar />
+            <SearchBar />
+          </section>
+        </aside>
         <RecipeContainer />
       </div>
     );

@@ -5,7 +5,7 @@ exports[`App should match the snapshot 1`] = `
   className="App"
 >
   <header
-    className="App-header"
+    className="sidebar"
   >
     <div
       id="small-zelda-header"
