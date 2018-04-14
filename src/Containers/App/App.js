@@ -26,7 +26,8 @@ export class App extends Component {
     return (
       <div className="App">
         <aside className="sidebar">
-          <section id="small-zelda-header">
+          <section id="small-zelda-header"></section>
+          <section id="search-container">
             <TypeTabs />
             <SearchBar />
           </section>
