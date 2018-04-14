@@ -45,10 +45,20 @@ export class RecipeContainer extends Component {
     }
   }
 
+  filterByType = recipes => {
+    const { typeFilter } = this.props;
+    if (typeFilter) {
+      return recipes.filter(recipe => recipe.type === typeFilter);
+    } else {
+      return recipes;
+    }
+  }
+
   filterRecipes = (allRecipes) => {
     const onceFiltered = this.filterByIngredient(allRecipes);
     const twiceFiltered = this.filterByName(onceFiltered);
-    return twiceFiltered;
+    const thriceFiltered = this.filterByType(twiceFiltered);
+    return thriceFiltered;
   }
 
   renderRecipes = () => {
@@ -115,20 +125,23 @@ RecipeContainer.propTypes = {
     updated_at: string
   })),
   ingredientFilter: array,
-  nameFilter: string
+  nameFilter: string,
+  typeFilter: string
 };
 
 export const MSTP = (props) => {
   const {
     recipes,
     ingredientFilter,
-    nameFilter
+    nameFilter,
+    typeFilter
   } = props;
 
   return {
     recipes,
     ingredientFilter,
-    nameFilter
+    nameFilter,
+    typeFilter
   };
 };
 

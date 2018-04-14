@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectedRecipes } from '../../actions'
-// import PropTypes from 'prop-types';
+import { addTypeFilter } from '../../actions';
+import PropTypes from 'prop-types';
 import './TypeTabs.css';
 
 export class TypeTabs extends Component {
-  constructor() {
-    super()
-  }
 
-  selectedType = () => {
-    const element = document.getElementById("dropDown");
-    const effect = element.options[element.selectedIndex].value
-    console.log(effect)
-    this.props.selectedRecipes(effect)
+  selectedType = (event) => {
+    const effect = event.target.value;
+    this.props.addTypeFilter(effect);
   }
 
   render() {
@@ -32,12 +27,18 @@ export class TypeTabs extends Component {
         <option>Stealth</option>
         <option>Elixers</option>
       </select>
-    )
+    );
   } 
 }
 
-export const MDTP = dispatch => ({
-  selectedRecipes: effect => dispatch(selectedRecipes(effect))  
-})
+const { func } = PropTypes;
 
-export default connect(null, MDTP)(TypeTabs)
+TypeTabs.propTypes = {
+  addTypeFilter: func
+};
+
+export const MDTP = dispatch => ({
+  addTypeFilter: effect => dispatch(addTypeFilter(effect))  
+});
+
+export default connect(null, MDTP)(TypeTabs);

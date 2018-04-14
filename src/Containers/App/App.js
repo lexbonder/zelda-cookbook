@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getRecipes, getIngredients } from '../../apiCalls';
 import SearchBar from '../SearchBar/SearchBar';
 import RecipeContainer from '../RecipeContainer/RecipeContainer';
-import TypeTabs from '../../Components/TypeTabs/TypeTabs';
+import TypeTabs from '../TypeTabs/TypeTabs';
 import { populateRecipes, populateIngredients } from '../../actions';
 import './App.css';
 // import { Route } from 'react-router-dom';

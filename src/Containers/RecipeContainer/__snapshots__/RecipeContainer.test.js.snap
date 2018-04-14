@@ -1,5 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`RecipeContainer renderRecipes should match the snapshot if there are no recipes to render 1`] = `
+<h1>
+  No recipes match your search
+</h1>
+`;
+
+exports[`RecipeContainer renderRecipes should match the snapshot when it renders ingredients 1`] = `
+Array [
+  <RecipeCard
+    duration={undefined}
+    hearts={undefined}
+    id={1}
+    ingredient1="Apple"
+    ingredient2={null}
+    ingredient3={null}
+    ingredient4={null}
+    ingredient5={null}
+    name="Baked Apple"
+    notes={undefined}
+    resale={undefined}
+    strength={undefined}
+    type="none"
+/>,
+  <RecipeCard
+    duration={undefined}
+    hearts={undefined}
+    id={2}
+    ingredient1="Apple"
+    ingredient2="Tabantha Wheat"
+    ingredient3="Cane Sugar"
+    ingredient4="Goat Butter"
+    ingredient5={null}
+    name="Apple Pie"
+    notes={undefined}
+    resale={undefined}
+    strength={undefined}
+    type="Restore Hearts"
+/>,
+]
+`;
+
 exports[`RecipeContainer should match the snapshot 1`] = `
 <div
   id="all-recipe-container"
@@ -13,6 +54,7 @@ exports[`RecipeContainer should match the snapshot 1`] = `
     ingredient5={null}
     key="1"
     name="Baked Apple"
+    type="none"
   />
   <RecipeCard
     id={2}
@@ -23,6 +65,7 @@ exports[`RecipeContainer should match the snapshot 1`] = `
     ingredient5={null}
     key="2"
     name="Apple Pie"
+    type="Restore Hearts"
   />
 </div>
 `;

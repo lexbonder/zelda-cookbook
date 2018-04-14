@@ -5,7 +5,8 @@ const {
   populateIngredients,
   addIngredientFilter,
   removeIngredientFilter,
-  updateNameFilter
+  updateNameFilter,
+  addTypeFilter
 } = actions;
 
 describe('populateRecipes', () => {
@@ -71,5 +72,17 @@ describe('updateNameFilter', () => {
     }
 
     expect(updateNameFilter(name)).toEqual(expected);
+  })
+})
+
+describe('addTypeFilter', () => {
+  it('should return an object with a type of ADD_TYPE_FILTER and a recipeType', () => {
+    const recipeType = 'attack';
+    const expected = {
+      type: 'ADD_TYPE_FILTER',
+      recipeType
+    }
+
+    expect(addTypeFilter(recipeType)).toEqual(expected)
   })
 })
