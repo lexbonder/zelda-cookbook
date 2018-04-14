@@ -48,9 +48,9 @@ export class RecipeContainer extends Component {
   filterByType = recipes => {
     const { typeFilter } = this.props;
     if (typeFilter) {
-      return recipes.filter(recipe => recipe.type === typeFilter)
+      return recipes.filter(recipe => recipe.type === typeFilter);
     } else {
-      return recipes
+      return recipes;
     }
   }
 
@@ -125,7 +125,8 @@ RecipeContainer.propTypes = {
     updated_at: string
   })),
   ingredientFilter: array,
-  nameFilter: string
+  nameFilter: string,
+  typeFilter: string
 };
 
 export const MSTP = (props) => {

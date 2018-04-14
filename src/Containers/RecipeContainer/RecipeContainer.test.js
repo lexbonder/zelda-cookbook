@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { RecipeContainer } from './RecipeContainer';
+import { RecipeContainer, MSTP } from './RecipeContainer';
 
 describe('RecipeContainer', () => {
   let wrapper;
@@ -189,6 +189,76 @@ describe('RecipeContainer', () => {
         ingredient4_id: 5,
         ingredient5_id: null,
       }])
+    })
+  })
+
+  describe('filterRecipes', () => {
+    it('should call each filtering algorithm with the array of recipes', () => {
+      wrapper.instance().filterByIngredient = jest.fn()
+        .mockImplementation(() => mockRecipes)
+      wrapper.instance().filterByName = jest.fn()
+        .mockImplementation(() => mockRecipes)
+      wrapper.instance().filterByType = jest.fn()
+        .mockImplementation(() => mockRecipes)
+      
+      wrapper.instance().filterRecipes(mockRecipes)
+
+      expect(wrapper.instance().filterByIngredient).toHaveBeenCalledWith(mockRecipes)
+      expect(wrapper.instance().filterByName).toHaveBeenCalledWith(mockRecipes)
+      expect(wrapper.instance().filterByType).toHaveBeenCalledWith(mockRecipes)
+    })
+
+    it('should return the array of recipes after passing through the filters', () => {
+      wrapper.instance().filterByIngredient = jest.fn()
+        .mockImplementation(() => mockRecipes)
+      wrapper.instance().filterByName = jest.fn()
+        .mockImplementation(() => mockRecipes)
+      wrapper.instance().filterByType = jest.fn()
+        .mockImplementation(() => mockRecipes)
+
+      expect(wrapper.instance().filterRecipes(mockRecipes)).toEqual(mockRecipes);
+    })
+  })
+
+  describe('renderRecipes', () => {
+    it('should match the snapshot if there are no recipes to render', () => {
+      const wrapper = shallow(<RecipeContainer
+        ingredientFilter={mockIngredientFilter}
+        nameFilter={mockNameFilter}
+        typeFilter={mockTypeFilter}
+        recipes={[]}
+      />);
+
+      expect(wrapper.instance().renderRecipes()).toMatchSnapshot();
+    })
+
+    it('should match the snapshot when it renders ingredients', () => {
+      const wrapper = shallow(<RecipeContainer
+        ingredientFilter={mockIngredientFilter}
+        nameFilter={mockNameFilter}
+        typeFilter={mockTypeFilter}
+        recipes={mockRecipes}
+      />);
+
+      expect(wrapper.instance().renderRecipes()).toMatchSnapshot()
+    })
+  })
+
+  describe('MSTP', () => {
+    it('should return an object with props from state', () => {
+      const mockState = {
+        recipes: [],
+        ingredientFilter: [],
+        nameFilter: '',
+        typeFilter: ''
+      }
+
+      const mapped = MSTP(mockState);
+
+      expect(mapped.recipes).toEqual([]);
+      expect(mapped.ingredientFilter).toEqual([]);
+      expect(mapped.nameFilter).toEqual('');
+      expect(mapped.typeFilter).toEqual('');
     })
   })
 });

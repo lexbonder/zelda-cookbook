@@ -207,7 +207,7 @@ describe('SearchBar', () => {
   });
 
   describe('MSTP', () => {
-    it('should return an object with with ingredients and a filter object', () => {
+    it('should return an object with ingredients and a filter object', () => {
       const mockState = {
         ingredients: [{
           id: '1',
