@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EffectFilter should match the snapshot 1`] = `
+<div
+  className="EffectFilter"
+>
+  <select
+    className="search-bar"
+    onChange={[Function]}
+    value="Recipe Type"
+  >
+    <option>
+      Recipe Type
+    </option>
+    <option>
+      Restore Hearts
+    </option>
+    <option>
+      Restore Stamina
+    </option>
+    <option>
+      Cold Resist
+    </option>
+    <option>
+      Heat Resist
+    </option>
+    <option>
+      Electric Resist
+    </option>
+    <option>
+      Movement Speed
+    </option>
+    <option>
+      Temporary Max Hearts
+    </option>
+    <option>
+      Defense Boost
+    </option>
+    <option>
+      Attack Power
+    </option>
+    <option>
+      Stealth
+    </option>
+    <option>
+      Elixers
+    </option>
+  </select>
+  <button
+    className="button__clear-filter
+              button__clear-filter--hidden"
+    onClick={[Function]}
+  >
+    X
+  </button>
+</div>
+`;

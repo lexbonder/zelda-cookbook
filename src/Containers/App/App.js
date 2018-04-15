@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getRecipes, getIngredients } from '../../apiCalls';
-import SearchBar from '../SearchBar/SearchBar';
+import Filter from '../Filter/Filter';
 import RecipeContainer from '../RecipeContainer/RecipeContainer';
-import TypeTabs from '../TypeTabs/TypeTabs';
 import { populateRecipes, populateIngredients } from '../../actions';
 import './App.css';
 // import { Route } from 'react-router-dom';
@@ -27,10 +26,7 @@ export class App extends Component {
       <div className="App">
         <aside className="sidebar">
           <section id="small-zelda-header"></section>
-          <section id="search-container">
-            <TypeTabs />
-            <SearchBar />
-          </section>
+          <Filter />
         </aside>
         <RecipeContainer />
       </div>
