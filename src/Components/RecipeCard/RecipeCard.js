@@ -2,6 +2,7 @@
 import React from 'react';
 import './RecipeCard.css';
 import PropTypes from 'prop-types';
+import heart from '../../assets/heart.png';
 import greenRupee from '../../assets/GreenRupee.png';
 import seafoodCurry from '../../assets/Seafoodcurry.jpg';
 
@@ -40,7 +41,7 @@ const RecipeCard = (props) => {
           <img src={seafoodCurry} alt="Seafood Curry" />
           <div className={`${ name } name-hearts`}>
             <h2 className={`${ name } recipe-name`}>{ name }</h2>
-            <h3 className={`${ name } recipe-hearts`}>Hearts: { hearts }</h3>
+            <h3 className={`${ name } recipe-hearts`}><img src={ heart } alt="Number Of Hearts"/>{ hearts }</h3>
           </div>
           <h5 className={`${ name } recipe-type`}>Type: { type }</h5>
         </div>

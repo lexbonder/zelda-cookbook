@@ -5,7 +5,8 @@
   justify-content: center;
   font-family: 'PT Serif', serif;
   overflow-y: scroll;
-  height: 600px; }
+  height: 660px;
+  margin-top: auto; }
 
 .recipe-card-container {
   min-width: 558px;
@@ -17,7 +18,7 @@
   color: #dfd5c3; }
 
 article {
-  height: 80px;
+  height: 88px;
   overflow-y: hidden; }
 
 .active-recipe {
@@ -36,6 +37,11 @@ article {
   margin-top: 0px;
   margin-bottom: 5px;
   padding-left: 20px; }
+
+.recipe-hearts img {
+  margin-right: 10px;
+  width: 25px;
+  height: 20px; }
 
 .recipe-type {
   margin-top: 5px;
