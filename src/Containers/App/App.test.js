@@ -9,8 +9,8 @@ jest.mock('../../apiCalls')
 
 describe('App', () => {
   let wrapper;
-  let mockPopulateRecipes = jest.fn();
   let mockPopulateIngredients = jest.fn();
+  let mockPopulateRecipes = jest.fn();
 
   beforeEach(() => {
     wrapper = shallow(<App
@@ -20,7 +20,6 @@ describe('App', () => {
     
   })
   it('should match the snapshot', () => {
-
     expect(wrapper).toMatchSnapshot();
   });
 

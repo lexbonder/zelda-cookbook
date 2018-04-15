@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IngredientFilter ingredientListToRender should filter its results based on what the user is searching for 1`] = `Array []`;
+
+exports[`IngredientFilter ingredientListToRender should render a list of ingredients and match the snapshot 1`] = `
+Array [
+  <p
+    className="search-results__item"
+    id={1}
+    onClick={[Function]}
+>
+    Apple
+</p>,
+]
+`;
+
+exports[`IngredientFilter should match the snapshot 1`] = `
+<div>
+  <div
+    className="search-bar__ingredient"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <input
+      className="search-bar"
+      onChange={[Function]}
+      placeholder="Select up to 5"
+      type="text"
+      value=""
+    />
+    <section
+      className="
+                search-results__container
+                
+              "
+    >
+      <p
+        className="search-results__item"
+        id={1}
+        key="1"
+        onClick={[Function]}
+      >
+        Apple
+      </p>
+    </section>
+  </div>
+  <section
+    className="ingredientTag-container"
+  />
+</div>
+`;
+
+exports[`IngredientFilter tagsToRender should return tags depending on what is in the filters ingredients array 1`] = `
+Array [
+  <IngredientTag
+    id="0"
+    name="Chicken"
+    remove={[Function]}
+/>,
+  <IngredientTag
+    id="2"
+    name="Grape"
+    remove={[Function]}
+/>,
+  <IngredientTag
+    id="3"
+    name="Pear"
+    remove={[Function]}
+/>,
+  <IngredientTag
+    id="4"
+    name="Fish"
+    remove={[Function]}
+/>,
+  <IngredientTag
+    id="5"
+    name="Tuna"
+    remove={[Function]}
+/>,
+]
+`;

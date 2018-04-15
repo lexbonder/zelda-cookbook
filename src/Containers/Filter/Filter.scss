@@ -1,17 +1,13 @@
-.SearchBar {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  align-items: center;
-  margin: 20px auto;
-  width: fit-content;
+.Filter {
+  margin: 20px 0;
 }
 
 .search-bar {
   font-size: 1.5em;
-  width: 130px;
+  width: 250px;
   border: 1px solid black;
-  height: 33px;
-  padding-left: 5px;
+  padding: 5px;
+  border-radius: 0;
 }
 
 .search-bar__ingredient {
@@ -19,22 +15,11 @@
   position: relative;
 }
 
-.search-bar--hidden {
-  display: none;
-}
-
-.search-button {
-  width: 130px;
-  border: 1px solid black;
-  text-align: center;
+.filter__category {
+  font-family: fantasy, 'sans-serif';
+  text-align: left;
   font-size: 1.5em;
-  background-color: lightgray;
-  color: gray;
-}
-
-.search-button--selected {
-  background-color: white;
-  color: black
+  color: #EDE5CB;
 }
 
 .submit-button {
@@ -67,9 +52,23 @@
   }
 }
 
-.ingredientTag-container {
-  display: flex;
-  justify-content: space-around;
-  width: fit-content;
-  margin: auto;
+.NameFilter,
+.IngredientTag,
+.EffectFilter {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  align-items: center;
+}
+
+.button__clear-filter {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  font-size: 20px;
+  color: #1c3744;
+  text-align: center;
+}
+
+.button__clear-filter--hidden {
+  display: none;
 }

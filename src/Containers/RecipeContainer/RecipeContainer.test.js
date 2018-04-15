@@ -50,6 +50,10 @@ describe('RecipeContainer', () => {
     />);
   });
 
+  it('should have a default state', () => {
+    expect(wrapper.state().loading).toEqual(true)
+  })
+
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot()
   })

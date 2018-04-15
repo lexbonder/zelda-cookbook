@@ -6,14 +6,19 @@ describe('typeFilterReducer', () => {
     expect(typeFilterReducer(undefined, {})).toEqual('')
   })
 
-  it('should add the recipeType when the time is ADD_TYPE_FILTER', () => {
+  it('should add the recipeType when the type is ADD_TYPE_FILTER', () => {
     const mockAction = {
       type: 'ADD_TYPE_FILTER',
-      recipeType: 'attack'
+      recipeType: 'Restore Hearts'
     }
+    const expected = 'Restore Hearts'
+    expect(typeFilterReducer(undefined, mockAction)).toEqual('Restore Hearts')
+  })
 
-    const expected = 'attack'
-
-    expect(typeFilterReducer(undefined, mockAction)).toEqual('attack')
+  it('should set the state as an empty string when the type is REMOVE_TYPE_FILTER', () => {
+    const mockAction = {
+      type: 'REMOVE_TYPE_FILTER'
+    }
+    expect(typeFilterReducer(undefined, mockAction)).toEqual('')
   })
 })

@@ -22,7 +22,7 @@ describe('IngredientTag', () => {
   });
 
   it('should call mockRemove when clicked', () => {
-    wrapper.find('h1').simulate('click')
+    wrapper.find('button').simulate('click')
     expect(mockRemove).toHaveBeenCalled()
   });
 });

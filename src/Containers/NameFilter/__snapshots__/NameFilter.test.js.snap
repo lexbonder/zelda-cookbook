@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NameFilter should match the snapshot 1`] = `
+<div
+  className="NameFilter"
+>
+  <input
+    className="search-bar search-bar__recipe"
+    onChange={[Function]}
+    placeholder="Recipe Name"
+    type="text"
+    value=""
+  />
+  <button
+    className="button__clear-filter
+              button__clear-filter--hidden"
+    onClick={[Function]}
+  >
+    X
+  </button>
+</div>
+`;

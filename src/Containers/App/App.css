@@ -1,10 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Serif:700");
 * {
   box-sizing: border-box; }
 
 .App {
   display: grid;
-  grid-template-columns: 20% auto;
-  grid-template-rows: 20% 20% 20% auto; }
+  grid-template-columns: 400px auto; }
 
 .sidebar {
   background: linear-gradient(to bottom, #1C3744 20%, #ddd0b6);
@@ -16,17 +16,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   height: 200px; }
-
-#search-container {
-  align-items: stretch;
-  display: grid;
-  justify-content: space-around;
-  grid-template-columns: 80% auto;
-  grid-template-rows: 1fr 1fr 1fr; }
-
-#dropDown {
-  grid-row-start: 2;
-  justify-self: stretch; }
 
 body {
   background-image: url("../../assets/floral-old-paper-or-parchment.jpg");

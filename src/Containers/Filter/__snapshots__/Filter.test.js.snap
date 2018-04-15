@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter should match the snapshot 1`] = `
+<div
+  className="Filter"
+>
+  <h2
+    className="filter__category"
+  >
+    Recipe Name:
+  </h2>
+  <Connect(NameFilter) />
+  <h2
+    className="filter__category"
+  >
+    Type:
+  </h2>
+  <Connect(EffectFilter) />
+  <h2
+    className="filter__category"
+  >
+    Ingredients:
+  </h2>
+  <Connect(IngredientFilter) />
+</div>
+`;

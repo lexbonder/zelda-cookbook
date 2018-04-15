@@ -6,7 +6,8 @@ const {
   addIngredientFilter,
   removeIngredientFilter,
   updateNameFilter,
-  addTypeFilter
+  addTypeFilter,
+  removeTypeFilter
 } = actions;
 
 describe('populateRecipes', () => {
@@ -84,5 +85,11 @@ describe('addTypeFilter', () => {
     }
 
     expect(addTypeFilter(recipeType)).toEqual(expected)
+  })
+})
+
+describe('removeTypeFilter', () => {
+  it('should return an object with a type of REMOVE_TYPE_FILTER', () => {
+    expect(removeTypeFilter()).toEqual({type: 'REMOVE_TYPE_FILTER'});
   })
 })
