@@ -22,7 +22,7 @@
   display: grid;
   justify-content: space-around;
   grid-template-columns: 80% auto;
-  grid-template-rows: 1fr 1fr 1fr; }
+  grid-template-rows: 1fr; }
 
 #dropDown {
   grid-row-start: 2;
