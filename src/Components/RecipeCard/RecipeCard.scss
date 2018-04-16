@@ -9,8 +9,7 @@
 }
 
 .recipe-card-container {
-  min-width: 558px;  
-  max-width: 558px;
+  width: 558px;
   margin: 10px auto;
   border-radius: 10px;
   background-color: rgba(88,98,94,.75);
@@ -20,7 +19,7 @@
 }
 
 article {
-  height: 88px;
+  height: 111px;
   overflow-y: hidden
 }
 
@@ -55,6 +54,10 @@ article {
   margin-right: 10px;
   width: 25px;
   height: 20px;
+}
+
+.recipe-notes {
+  padding-top: 10px;
 }
 
 #targetHeart {

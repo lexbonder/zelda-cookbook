@@ -43,7 +43,7 @@ exports[`EffectFilter should match the snapshot 1`] = `
       Stealth
     </option>
     <option>
-      Elixers
+      Elixer
     </option>
   </select>
   <button
