@@ -11,7 +11,7 @@ const RecipeCard = (props) => {
     image,
     name, 
     hearts, 
-    type, 
+    type_image,
     duration, 
     notes,    
     strength, 
@@ -42,6 +42,12 @@ const RecipeCard = (props) => {
     }
     return ingredients;
   };
+
+  const renderTypeImage = () => {
+    if (type_image) {
+      return <img src={type_image} alt='Recipe Type Icon' className='type_image'/>;
+    }
+  };
   
   return (
     <div className="recipe-card-container">
@@ -53,7 +59,7 @@ const RecipeCard = (props) => {
             <h2 className={`${ name } recipe-name`}>{ name }</h2>
             <h3 className={`${ name } recipe-hearts`}><img src={ heart } alt="Number Of Hearts"/><span id="targetHeart">{ hearts }</span></h3>
           </div>
-          <h5 className={`${ name } recipe-type`}>Type: { type }</h5>
+          {renderTypeImage()}
         </div>
 
         <h3 className={`${ name } recipe-notes`}>{ notes === null ? '' : 'Notes: ' +  notes }</h3>
@@ -78,7 +84,8 @@ RecipeCard.propTypes = {
   id: number,
   name: string, 
   hearts: string, 
-  type: string, 
+  type: string,
+  type_image: string,
   duration: string, 
   notes: string,
   image: string,

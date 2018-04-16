@@ -91,6 +91,7 @@ RecipeContainer.propTypes = {
     notes: string,
     resale: string,
     type: string,
+    type_image: string,
     duration: string,
     strength: string,
     ingredient1: string,

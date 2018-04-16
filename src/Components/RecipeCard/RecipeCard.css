@@ -11,9 +11,10 @@
   max-width: 558px;
   margin: 10px auto;
   border-radius: 10px;
-  background-color: #58625E;
+  background-color: rgba(88, 98, 94, 0.75);
   padding: 10px;
-  color: #dfd5c3; }
+  color: #dfd5c3;
+  position: relative; }
 
 article {
   height: 88px;
@@ -56,8 +57,7 @@ article {
 
 img {
   width: 80px;
-  height: 80px;
-  opacity: 1; }
+  height: 80px; }
 
 .resale {
   display: flex;
@@ -65,8 +65,7 @@ img {
 
 .resale img {
   width: 15px;
-  height: 24px;
-  opacity: 1; }
+  height: 24px; }
 
 .resale p {
   margin: 3px;
@@ -77,3 +76,11 @@ img {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around; }
+
+.type_image {
+  height: 30px;
+  width: 30px;
+  background-color: black;
+  position: absolute;
+  right: 10px;
+  top: 10px; }
