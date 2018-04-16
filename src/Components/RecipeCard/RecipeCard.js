@@ -13,17 +13,7 @@ const RecipeCard = (props) => {
     hearts, 
     type, 
     duration, 
-    notes, 
-    ingredient1,
-    ingredient1Image, 
-    ingredient2,
-    ingredient2Image,    
-    ingredient3,
-    ingredient3Image,     
-    ingredient4, 
-    ingredient4Image,     
-    ingredient5, 
-    ingredient5Image,     
+    notes,    
     strength, 
     resale
   } = props;
@@ -36,6 +26,21 @@ const RecipeCard = (props) => {
     } else {
       targetArticle.classList.add('active-recipe');  
     }
+  };
+
+  const renderIngredients = () => {
+    let ingredients = [];
+    for (let i = 1; i <= 5; i++ ) {
+      if (props[`ingredient${i}_image`]) {
+        ingredients.push (
+          <h3 className={`${name} ${props[`ingredient${i}`]}`}>
+            <img src={ props[`ingredient${i}_image`] } alt={ props[`ingredient${i}`] } />
+            { props[`ingredient${i}`] }
+          </h3>
+        );
+      }
+    }
+    return ingredients;
   };
   
   return (
@@ -60,11 +65,7 @@ const RecipeCard = (props) => {
         </div>
 
         <div className={`${ name } ingredients`}>
-          <h3 className={`${ name } ingredient1`}><img src={ ingredient1Image } alt={ name } />{ ingredient1 }</h3>
-          <h3 className={`${ name } ingredient2`}><img src={ ingredient2Image } alt={ name } />{ ingredient2 }</h3>
-          <h3 className={`${ name } ingredient3`}><img src={ ingredient3Image } alt={ name } />{ ingredient3 }</h3>
-          <h3 className={`${ name } ingredient4`}><img src={ ingredient4Image } alt={ name } />{ ingredient4 }</h3>
-          <h3 className={`${ name } ingredient5`}><img src={ ingredient5Image } alt={ name } />{ ingredient5 }</h3>
+          {renderIngredients()}  
         </div>
       </article>
     </div>
@@ -79,12 +80,18 @@ RecipeCard.propTypes = {
   hearts: string, 
   type: string, 
   duration: string, 
-  notes: string, 
+  notes: string,
+  image: string,
   ingredient1: string, 
   ingredient2: string, 
   ingredient3: string, 
   ingredient4: string, 
   ingredient5: string,
+  ingredient1_image: string, 
+  ingredient2_image: string, 
+  ingredient3_image: string, 
+  ingredient4_image: string, 
+  ingredient5_image: string,
   ingredient1_id: number, 
   ingredient2_id: number, 
   ingredient3_id: number, 

@@ -65,28 +65,9 @@ export class RecipeContainer extends Component {
     const recipes = this.filterRecipes(this.props.recipes);
 
     if(recipes.length) {      
-      const recipesToRender = recipes.map(recipe => {
-        return <RecipeCard
-          key={ recipe.id }
-          id={ recipe.id }
-          image={ recipe.image }
-          name={ recipe.name }
-          hearts={ recipe.hearts }
-          type={ recipe.type }
-          duration={ recipe.duration }
-          notes={ recipe.notes }
-          ingredient1={recipe.ingredient1}
-          ingredient2={ recipe.ingredient2 }
-          ingredient3={ recipe.ingredient3 }
-          ingredient4={ recipe.ingredient4 } 
-          ingredient5={ recipe.ingredient5 }
-          strength={ recipe.strength }
-          resale={ recipe.resale }
-        />;
-      });
-      return recipesToRender;
+      return recipes.map(recipe => <RecipeCard key={ recipe.id } {...recipe} />);
     } else {
-    return <div id="loading"></div>;
+      return <div id="loading"></div>;
     }
   }
 
@@ -117,6 +98,11 @@ RecipeContainer.propTypes = {
     ingredient3: string,
     ingredient4: string,
     ingredient5: string,
+    ingredient1_image: string,
+    ingredient2_image: string,
+    ingredient3_image: string,
+    ingredient4_image: string,
+    ingredient5_image: string,
     ingredient1_id: number,
     ingredient2_id: number,
     ingredient3_id: number,
