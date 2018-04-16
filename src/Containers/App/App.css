@@ -8,14 +8,14 @@
 
 .sidebar {
   background: linear-gradient(to bottom, #1C3744 20%, #ddd0b6);
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px; }
 
 #small-zelda-header {
   background-image: url("../../assets/small-zelda-header.png");
   background-size: contain;
   background-repeat: no-repeat;
-  height: 200px; }
+  height: 160px; }
 
 #search-container {
   align-items: stretch;

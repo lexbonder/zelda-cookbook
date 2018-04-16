@@ -27,7 +27,10 @@ exports[`RecipeCard should match the snapshot 1`] = `
         <h3
           className="Baked Apple recipe-hearts"
         >
-          Hearts: 
+          <img
+            alt="Number Of Hearts"
+            src="heart.png"
+          />
           ¾
         </h3>
       </div>
