@@ -1,15 +1,17 @@
 #loading {
   background-image: url("https://68.media.tumblr.com/7a5f3925e8e8351619759a2a9566bb03/tumblr_omsjs7eiVk1r85hlio1_r1_500.gif");
   background-repeat: no-repeat;
+  box-shadow: inset 0 20px 20px -20px #436E52, inset 20px 0 20px -20px #436E52, inset -20px 0 20px -20px #436E52, inset 0 -20px 20px -20px #436E52, 0 0 10px 10px #d6c8afb6;
   height: 270px;
-  width: 100%;
+  width: 31%;
   margin: auto 25%; }
 
 #loading h1 {
   color: #EDE5CB;
   display: block;
+  line-height: 135px;
   margin-left: 130px;
-  margin-top: 55px;
+  margin-top: -38px;
   animation-duration: 3s;
   animation-name: slidein; }
 
@@ -21,7 +23,7 @@
 
 @keyframes slidein {
   0% {
-    margin-top: -555px;
+    margin-top: -700px;
     margin-left: 130px; }
   100% {
     margin-left: 130px; } }
