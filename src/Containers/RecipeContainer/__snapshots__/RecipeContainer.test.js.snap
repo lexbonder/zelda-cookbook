@@ -3,7 +3,15 @@
 exports[`RecipeContainer renderRecipes should match the snapshot if there are no recipes to render 1`] = `
 <div
   id="loading"
-/>
+>
+  <h1>
+    No Recipe Found!
+    <img
+      alt="Dubious Food"
+      src="DubiousFood.png"
+    />
+  </h1>
+</div>
 `;
 
 exports[`RecipeContainer renderRecipes should match the snapshot when it renders ingredients 1`] = `

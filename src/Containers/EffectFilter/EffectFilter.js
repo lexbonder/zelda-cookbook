@@ -47,7 +47,7 @@ export class EffectFilter extends Component {
           <option>Defense Boost</option>
           <option>Attack Power</option>
           <option>Stealth</option>
-          <option>Elixers</option>
+          <option>Elixer</option>
         </select>
         <button
           onClick={ this.resetSelect }

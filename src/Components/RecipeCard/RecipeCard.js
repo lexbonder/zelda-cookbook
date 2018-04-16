@@ -60,11 +60,11 @@ const RecipeCard = (props) => {
         </div>
 
         <div className={`${ name } ingredients`}>
-          <h3 className={`${ name } ingredient1`}><img src={ ingredient1Image } alt={ name } />{ ingredient1 }</h3>
-          <h3 className={`${ name } ingredient2`}><img src={ ingredient2Image } alt={ name } />{ ingredient2 }</h3>
-          <h3 className={`${ name } ingredient3`}><img src={ ingredient3Image } alt={ name } />{ ingredient3 }</h3>
-          <h3 className={`${ name } ingredient4`}><img src={ ingredient4Image } alt={ name } />{ ingredient4 }</h3>
-          <h3 className={`${ name } ingredient5`}><img src={ ingredient5Image } alt={ name } />{ ingredient5 }</h3>
+          <h3 className={`${ name } ingredient1`}><img src={ ingredient1Image } alt={ ingredient1 } />{ ingredient1 }</h3>
+          <h3 className={`${ name } ingredient2`}><img src={ ingredient2Image } alt={ ingredient2 } />{ ingredient2 }</h3>
+          <h3 className={`${ name } ingredient3`}><img src={ ingredient3Image } alt={ ingredient3 } />{ ingredient3 }</h3>
+          <h3 className={`${ name } ingredient4`}><img src={ ingredient4Image } alt={ ingredient4 } />{ ingredient4 }</h3>
+          <h3 className={`${ name } ingredient5`}><img src={ ingredient5Image } alt={ ingredient5 } />{ ingredient5 }</h3>
         </div>
       </article>
     </div>
