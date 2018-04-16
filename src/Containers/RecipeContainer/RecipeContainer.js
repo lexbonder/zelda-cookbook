@@ -63,9 +63,8 @@ export class RecipeContainer extends Component {
 
   renderRecipes = () => {
     const recipes = this.filterRecipes(this.props.recipes);
-    const { ingredients } = this.props;
 
-    if(recipes.length && ingredients.length) {      
+    if(recipes.length) {      
       const recipesToRender = recipes.map(recipe => {
         return <RecipeCard
           key={ recipe.id }
@@ -77,15 +76,10 @@ export class RecipeContainer extends Component {
           duration={ recipe.duration }
           notes={ recipe.notes }
           ingredient1={recipe.ingredient1}
-          ingredient1Image={ ingredients[(recipe.ingredient1_id - 1)].image }
           ingredient2={ recipe.ingredient2 }
-          ingredient2Image={ ingredients[(recipe.ingredient2_id - 1)] === undefined ? null : ingredients[(recipe.ingredient2_id - 1)].image }
           ingredient3={ recipe.ingredient3 }
-          ingredient3Image={ ingredients[(recipe.ingredient3_id - 1)] === undefined ? null : ingredients[(recipe.ingredient3_id - 1)].image }
           ingredient4={ recipe.ingredient4 } 
-          ingredient4Image={ ingredients[(recipe.ingredient4_id - 1)] === undefined ? null : ingredients[(recipe.ingredient4_id - 1)].image }
           ingredient5={ recipe.ingredient5 }
-          ingredient5Image={ ingredients[(recipe.ingredient5_id - 1)] === undefined ? null : ingredients[(recipe.ingredient5_id - 1)].image }
           strength={ recipe.strength }
           resale={ recipe.resale }
         />;
@@ -141,16 +135,14 @@ export const MSTP = (props) => {
     recipes,
     ingredientFilter,
     nameFilter,
-    typeFilter,
-    ingredients
+    typeFilter
   } = props;
 
   return {
     recipes,
     ingredientFilter,
     nameFilter,
-    typeFilter,
-    ingredients
+    typeFilter
   };
 };
 
