@@ -2,11 +2,9 @@
 #all-recipe-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   font-family: 'PT Serif', serif;
   overflow-y: scroll;
-  height: 660px;
-  margin-top: auto; }
+  height: 100vh; }
 
 .recipe-card-container {
   min-width: 558px;
