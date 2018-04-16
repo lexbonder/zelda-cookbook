@@ -9,7 +9,7 @@ export class RecipeContainer extends Component {
     super(props);
 
     this.state = {
-      loading: true,
+      loading: true
     };
   }
 
@@ -17,9 +17,9 @@ export class RecipeContainer extends Component {
     const { ingredientFilter } = this.props;
 
     if (ingredientFilter.length) {
-      const filtered = recipes.filter( recipe => {
+      const filtered = recipes.filter(recipe => {
         let match = 0;
-        ingredientFilter.forEach( ingredient => {
+        ingredientFilter.forEach(ingredient => {
           for (let i = 1; i <= 5; i++) {
             if (parseInt(ingredient.id, 10) === recipe[`ingredient${i}_id`]) {
               match++;
@@ -32,18 +32,18 @@ export class RecipeContainer extends Component {
     } else {
       return recipes;
     }
-  }
+  };
 
   filterByName = recipes => {
     const { nameFilter } = this.props;
     if (nameFilter) {
-      return recipes.filter(recipe => recipe.name.toLowerCase().includes(
-        nameFilter.toLowerCase())
+      return recipes.filter(recipe =>
+        recipe.name.toLowerCase().includes(nameFilter.toLowerCase())
       );
     } else {
       return recipes;
     }
-  }
+  };
 
   filterByType = recipes => {
     const { typeFilter } = this.props;
@@ -52,96 +52,101 @@ export class RecipeContainer extends Component {
     } else {
       return recipes;
     }
-  }
+  };
 
-  filterRecipes = (allRecipes) => {
+  filterRecipes = allRecipes => {
     const onceFiltered = this.filterByIngredient(allRecipes);
     const twiceFiltered = this.filterByName(onceFiltered);
     const thriceFiltered = this.filterByType(twiceFiltered);
     return thriceFiltered;
-  }
+  };
 
   renderRecipes = () => {
     const recipes = this.filterRecipes(this.props.recipes);
+    const { ingredients } = this.props;
     
-    if(recipes.length > 0) {
+    if (recipes.length && ingredients.length) {
       const recipesToRender = recipes.map(recipe => {
-        return <RecipeCard
-          key={ recipe.id }
-          id={ recipe.id }
-          name={ recipe.name }
-          hearts={ recipe.hearts }
-          type={ recipe.type }
-          duration={ recipe.duration }
-          notes={ recipe.notes }
-          ingredient1={ recipe.ingredient1 }
-          ingredient2={ recipe.ingredient2 }
-          ingredient3={ recipe.ingredient3 }
-          ingredient4={ recipe.ingredient4 }
-          ingredient5={ recipe.ingredient5 }
-          strength={ recipe.strength }
-          resale={ recipe.resale }
-        />;
+
+        return (
+          <RecipeCard
+            key={recipe.id}
+            id={recipe.id}
+            name={recipe.name}
+            hearts={recipe.hearts}
+            type={recipe.type}
+            duration={recipe.duration}
+            notes={recipe.notes}
+            ingredient1={recipe.ingredient1}
+            ingredient1Image={ingredients[(recipe.ingredient1_id - 1)].image}
+            ingredient2={recipe.ingredient2}
+            /*ingredient2Image={ingredients[(recipe.ingredient2_id - 1)].image}*/
+            ingredient3={recipe.ingredient3}
+            /*ingredient3Image={ingredients[(recipe.ingredient3_id - 1)].image}*/
+            ingredient4={recipe.ingredient4}
+            /*ingredient4Image={ingredients[(recipe.ingredient4_id - 1)].image}*/
+            ingredient5={recipe.ingredient5}
+            /*ingredient5Image={ingredients[(recipe.ingredient5_id - 1)].image}*/
+            image={recipe.image}
+            strength={recipe.strength}
+            resale={recipe.resale}
+          />
+        );
       });
       return recipesToRender;
     } else {
       return <h1>No recipes match your search</h1>;
     }
-  }
+  };
 
   render() {
-    return (
-      <div id="all-recipe-container">
-        { this.renderRecipes() }
-      </div>
-    );
+    return <div id="all-recipe-container">{this.renderRecipes()}</div>;
   }
 }
 
 const { arrayOf, shape, number, string, array } = PropTypes;
 
 RecipeContainer.propTypes = {
-  recipes: arrayOf(shape({
-    id: number,
-    category: string,
-    hearts: string,
-    name: string,
-    notes: string,
-    resale: string,
-    type: string,
-    duration: string,
-    strength: string,
-    ingredient1: string,
-    ingredient2: string,
-    ingredient3: string,
-    ingredient4: string,
-    ingredient5: string,
-    ingredient1_id: number,
-    ingredient2_id: number,
-    ingredient3_id: number,
-    ingredient4_id: number,
-    ingredient5_id: number,
-    created_at: string,
-    updated_at: string
-  })),
+  recipes: arrayOf(
+    shape({
+      id: number,
+      category: string,
+      hearts: string,
+      name: string,
+      notes: string,
+      resale: string,
+      type: string,
+      duration: string,
+      strength: string,
+      ingredient1: string,
+      ingredient2: string,
+      ingredient3: string,
+      ingredient4: string,
+      ingredient5: string,
+      ingredient1_id: number,
+      ingredient2_id: number,
+      ingredient3_id: number,
+      ingredient4_id: number,
+      ingredient5_id: number,
+      image: string,
+      created_at: string,
+      updated_at: string
+    })
+  ),
   ingredientFilter: array,
   nameFilter: string,
   typeFilter: string
 };
 
-export const MSTP = (props) => {
-  const {
-    recipes,
-    ingredientFilter,
-    nameFilter,
-    typeFilter
-  } = props;
+export const MSTP = props => {
+  const { recipes, ingredientFilter, nameFilter, typeFilter, ingredients } = props;
 
   return {
     recipes,
     ingredientFilter,
     nameFilter,
-    typeFilter
+    typeFilter,
+    ingredients
   };
 };
 
