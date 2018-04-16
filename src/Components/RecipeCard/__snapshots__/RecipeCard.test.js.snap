@@ -30,7 +30,11 @@ exports[`RecipeCard should match the snapshot 1`] = `
             alt="Number Of Hearts"
             src="heart.png"
           />
-          ¾
+          <span
+            id="targetHeart"
+          >
+            ¾
+          </span>
         </h3>
       </div>
       <h5
@@ -72,44 +76,7 @@ exports[`RecipeCard should match the snapshot 1`] = `
     </div>
     <div
       className="Baked Apple ingredients"
-    >
-      <h3
-        className="Baked Apple ingredient1"
-      >
-        <img
-          alt="Baked Apple"
-        />
-        Apple
-      </h3>
-      <h3
-        className="Baked Apple ingredient2"
-      >
-        <img
-          alt="Baked Apple"
-        />
-      </h3>
-      <h3
-        className="Baked Apple ingredient3"
-      >
-        <img
-          alt="Baked Apple"
-        />
-      </h3>
-      <h3
-        className="Baked Apple ingredient4"
-      >
-        <img
-          alt="Baked Apple"
-        />
-      </h3>
-      <h3
-        className="Baked Apple ingredient5"
-      >
-        <img
-          alt="Baked Apple"
-        />
-      </h3>
-    </div>
+    />
   </article>
 </div>
 `;
