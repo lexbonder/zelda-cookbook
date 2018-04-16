@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RecipeContainer renderRecipes should match the snapshot if there are no recipes to render 1`] = `
-<h1>
-  No recipes match your search
-</h1>
+<div
+  id="loading"
+/>
 `;
 
 exports[`RecipeContainer renderRecipes should match the snapshot when it renders ingredients 1`] = `
@@ -12,6 +12,7 @@ Array [
     duration={undefined}
     hearts={undefined}
     id={1}
+    image={undefined}
     ingredient1="Apple"
     ingredient2={null}
     ingredient3={null}
@@ -27,6 +28,7 @@ Array [
     duration={undefined}
     hearts={undefined}
     id={2}
+    image={undefined}
     ingredient1="Apple"
     ingredient2="Tabantha Wheat"
     ingredient3="Cane Sugar"

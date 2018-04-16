@@ -13,7 +13,7 @@ export class RecipeContainer extends Component {
     };
   }
 
-  filterByIngredient = recipes => {
+  filterByIngredient = recipes => {    
     const { ingredientFilter } = this.props;
 
     if (ingredientFilter.length) {
@@ -63,21 +63,22 @@ export class RecipeContainer extends Component {
 
   renderRecipes = () => {
     const recipes = this.filterRecipes(this.props.recipes);
-    
-    if(recipes.length > 0) {
+
+    if(recipes.length) {      
       const recipesToRender = recipes.map(recipe => {
         return <RecipeCard
           key={ recipe.id }
           id={ recipe.id }
+          image={ recipe.image }
           name={ recipe.name }
           hearts={ recipe.hearts }
           type={ recipe.type }
           duration={ recipe.duration }
           notes={ recipe.notes }
-          ingredient1={ recipe.ingredient1 }
+          ingredient1={recipe.ingredient1}
           ingredient2={ recipe.ingredient2 }
           ingredient3={ recipe.ingredient3 }
-          ingredient4={ recipe.ingredient4 }
+          ingredient4={ recipe.ingredient4 } 
           ingredient5={ recipe.ingredient5 }
           strength={ recipe.strength }
           resale={ recipe.resale }
@@ -85,7 +86,7 @@ export class RecipeContainer extends Component {
       });
       return recipesToRender;
     } else {
-      return <h1>No recipes match your search</h1>;
+    return <div id="loading"></div>;
     }
   }
 
