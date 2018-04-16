@@ -15,7 +15,9 @@
   background-image: url("../../assets/small-zelda-header.png");
   background-size: contain;
   background-repeat: no-repeat;
-  height: 200px; }
+  box-shadow: 0 0 20px 10px #1C3744;
+  height: 194px;
+  width: 253px; }
 
 #search-container {
   align-items: stretch;
