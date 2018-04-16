@@ -74,9 +74,7 @@ export class RecipeContainer extends Component {
     } else {
       return (
         <div id="loading">
-          <h1>
-            No Recipe Found!<img src={DubiousFood} alt="Dubious Food" />
-          </h1>
+          <h1>No Recipe Found!<img src={ DubiousFood } alt="Dubious Food"></img></h1>
         </div>
       );
     }

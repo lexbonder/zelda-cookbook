@@ -35,42 +35,36 @@ exports[`RecipeCard should match the snapshot 1`] = `
           >
             ¾
           </span>
+          <img
+            alt="Green Rupees Jewel"
+            id="green-rupee"
+            src="GreenRupee.png"
+          />
+          <p>
+            0
+          </p>
         </h3>
       </div>
     </div>
     <h3
       className="Baked Apple recipe-notes"
     >
-      Notes: Open flame.
+      Notes: 
+      Open flame.
     </h3>
+    <div
+      className="Baked Apple ingredients"
+    />
     <div
       className="Baked Apple recipe-specific-details"
     >
       <h5
         className="Baked Apple strength"
-      >
-        Strength: 
-      </h5>
+      />
       <h5
         className="Baked Apple duration"
-      >
-        Duration: 
-      </h5>
-      <h5
-        className="Baked Apple resale"
-      >
-        <img
-          alt="Green Rupees Jewel"
-          src="GreenRupee.png"
-        />
-        <p>
-          0
-        </p>
-      </h5>
+      />
     </div>
-    <div
-      className="Baked Apple ingredients"
-    />
   </article>
 </div>
 `;
