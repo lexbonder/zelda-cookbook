@@ -38,10 +38,18 @@ article {
   margin-bottom: 5px;
   padding-left: 20px; }
 
+.recipe-hearts {
+  display: grid;
+  grid-template-columns: 35px 1fr; }
+
 .recipe-hearts img {
+  align-self: center;
   margin-right: 10px;
   width: 25px;
   height: 20px; }
+
+#targetHeart {
+  align-self: start; }
 
 .recipe-type {
   margin-top: 5px;
