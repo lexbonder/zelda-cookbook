@@ -37,12 +37,6 @@ exports[`RecipeCard should match the snapshot 1`] = `
           </span>
         </h3>
       </div>
-      <h5
-        className="Baked Apple recipe-type"
-      >
-        Type: 
-        Restore Hearts
-      </h5>
     </div>
     <h3
       className="Baked Apple recipe-notes"
