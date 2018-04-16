@@ -47,6 +47,12 @@ To run the tests:
 npm test
 ```
 
+## Deployment
+
+This site is deployed with [Surge.sh](https://surge.sh/)
+
+*https://zelda-cookbook.surge.sh/*
+
 ## Tech Stack
 
 * [Create React App](https://github.com/facebook/create-react-app)
