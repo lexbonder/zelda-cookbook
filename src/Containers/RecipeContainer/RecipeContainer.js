@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import RecipeCard from '../../Components/RecipeCard/RecipeCard';
+import DubiousFood from '../../assets/DubiousFood.png';
 import './RecipeContainer.css';
 
 export class RecipeContainer extends Component {
@@ -12,6 +13,10 @@ export class RecipeContainer extends Component {
       loading: true,
     };
   }
+
+  // componentDidMount() {
+  //   this.setState({ loading: false })
+  // }
 
   filterByIngredient = recipes => {    
     const { ingredientFilter } = this.props;
@@ -67,7 +72,9 @@ export class RecipeContainer extends Component {
     if(recipes.length) {      
       return recipes.map(recipe => <RecipeCard key={ recipe.id } {...recipe} />);
     } else {
-      return <div id="loading"></div>;
+    return <div id="loading">
+             <h1>No Recipe Found!<img src={ DubiousFood } alt="Dubious Food"></img></h1>
+           </div>
     }
   }
 

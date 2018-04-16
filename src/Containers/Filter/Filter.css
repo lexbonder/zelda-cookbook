@@ -2,8 +2,8 @@
   margin: 20px 0 0; }
 
 .search-bar {
-  font-size: 1.5em;
-  width: 250px;
+  font-size: 1.4em;
+  width: 240px;
   border: 1px solid black;
   padding: 5px;
   border-radius: 0; }
@@ -15,11 +15,11 @@
 .filter__category {
   font-family: fantasy, 'sans-serif';
   text-align: left;
-  font-size: 1.5em;
+  font-size: 1.4em;
   color: #EDE5CB; }
 
 .submit-button {
-  font-size: 1.5em;
+  font-size: 1.4em;
   border: 1px solid black; }
 
 .search-results__container {
@@ -36,7 +36,7 @@
 .search-results__item {
   margin: 0;
   padding: 15px;
-  font-size: 1.5em;
+  font-size: 1.4em;
   background-color: rgba(255, 255, 255, 0.9); }
   .search-results__item:hover {
     background-color: gray;
