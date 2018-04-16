@@ -23,8 +23,32 @@ article {
   overflow-y: hidden
 }
 
+.ingredient img {
+  border: 1px solid rgba(88,98,94,.75);
+  display: block;
+  margin: auto;
+}
+
+.ingredient {
+  text-align: center;
+  width: 100px;
+}
+
+.ingredients h3 {
+  font-size: 20px;
+  margin: 0 20px;
+}
+
+.ingredients {
+  padding-top: 33px;
+}
+
 .active-recipe {
   height: fit-content;
+  
+  .ingredients {
+    padding-top: 0px;
+  }
 }
 
 .recipe-details {
@@ -45,23 +69,30 @@ article {
 }
 
 .recipe-hearts {
-  display: grid; 
-  grid-template-columns: 35px 1fr;
+  align-items: center;
+  display: grid;
+  height: 20px;
+  grid-template-columns: 35px auto 40px auto;
+  width: fit-content;
+}
+
+.recipe-hearts p {
+  margin: 0;
+}
+
+#green-rupee {
+  padding-left: 15px;
+  width: 30px;
 }
 
 .recipe-hearts img {
-  align-self: center;
-  margin-right: 10px;
   width: 25px;
   height: 20px;
 }
 
 .recipe-notes {
+  margin-left: 10px;
   padding-top: 10px;
-}
-
-#targetHeart {
-  align-self: start;
 }
 
 .recipe-type {
@@ -75,26 +106,18 @@ img {
   height: 80px;
 }
 
-.resale {
-  display: flex;
-  flex-direction: row;
-}
-
-.resale img {
-  width: 15px;
-  height: 24px;
-}
-
-.resale p {
-  margin: 3px;
-  padding-left: 7px;
-}
-
 .ingredients,
 .recipe-specific-details {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  font-size: 20px;
+  justify-content: center;
+}
+
+.strength, 
+.duration {
+  margin-bottom: 0;
+  padding: 0 15px;
 }
 
 .type_image {

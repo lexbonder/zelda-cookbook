@@ -72,9 +72,11 @@ export class RecipeContainer extends Component {
     if(recipes.length) {      
       return recipes.map(recipe => <RecipeCard key={ recipe.id } {...recipe} />);
     } else {
-    return <div id="loading">
-             <h1>No Recipe Found!<img src={ DubiousFood } alt="Dubious Food"></img></h1>
-           </div>
+      return (
+        <div id="loading">
+          <h1>No Recipe Found!<img src={ DubiousFood } alt="Dubious Food"></img></h1>
+        </div>
+      );
     }
   }
 

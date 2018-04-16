@@ -33,7 +33,7 @@ const RecipeCard = (props) => {
     for (let i = 1; i <= 5; i++ ) {
       if (props[`ingredient${i}_image`]) {
         ingredients.push (
-          <h3 className={`${name} ${props[`ingredient${i}`]}`}>
+          <h3 className={`ingredient ${name} ${props[`ingredient${i}`]}`}>
             <img src={ props[`ingredient${i}_image`] } alt={ props[`ingredient${i}`] } />
             { props[`ingredient${i}`] }
           </h3>
@@ -48,30 +48,40 @@ const RecipeCard = (props) => {
       return <img src={type_image} alt='Recipe Type Icon' className='type_image'/>;
     }
   };
+
+  const renderNotes = () => {
+    if (notes) {
+      return <h3 className={`${ name } recipe-notes`}>Notes: { notes }</h3>;
+    }
+  };
   
   return (
     <div className="recipe-card-container">
-      <article id={ id } className={ name } onClick={clicked} >
+      <article id={ id } className={ name } onClick={ clicked } >
 
         <div className={`${ name } recipe-details`}>
           <img src={ image } alt={ name } />
           <div className={`${ name } name-hearts`}>
             <h2 className={`${ name } recipe-name`}>{ name }</h2>
-            <h3 className={`${ name } recipe-hearts`}><img src={ heart } alt="Number Of Hearts"/><span id="targetHeart">{ hearts }</span></h3>
+            <h3 className={`${ name } recipe-hearts`}>
+              <img src={ heart } alt="Number Of Hearts"/>
+              <span id="targetHeart">{ hearts }</span>
+              <img id="green-rupee" src={ greenRupee } alt="Green Rupees Jewel"/>
+              <p>{ resale }</p>
+            </h3>
           </div>
-          {renderTypeImage()}
+          { renderTypeImage() }
         </div>
 
-        <h3 className={`${ name } recipe-notes`}>{ notes === null ? '' : 'Notes: ' +  notes }</h3>
-
-        <div className={`${ name } recipe-specific-details`}>
-          <h5 className={`${ name } strength`}>Strength: { strength }</h5>
-          <h5 className={`${ name } duration`}>Duration: { duration }</h5>
-          <h5 className={`${ name } resale`}><img src={ greenRupee } alt="Green Rupees Jewel"/><p>{ resale }</p></h5>
-        </div>
+        { renderNotes() }
 
         <div className={`${ name } ingredients`}>
-          {renderIngredients()}  
+          { renderIngredients() }  
+        </div>
+
+        <div className={`${ name } recipe-specific-details`}>
+          <h5 className={`${ name } strength`}>{ strength === null ? '' : 'Strength: ' + strength }</h5>
+          <h5 className={`${ name } duration`}>{ duration === null ? '' : 'Duration: ' + duration }</h5> 
         </div>
       </article>
     </div>
