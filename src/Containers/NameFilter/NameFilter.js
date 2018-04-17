@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateNameFilter } from '../../actions';
-import './NameFilter.css';
 
 let timeout;
 

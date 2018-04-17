@@ -4,7 +4,7 @@
 
 .App {
   display: grid;
-  grid-template-columns: 300px auto; }
+  grid-template-columns: 340px auto; }
 
 .sidebar {
   background: linear-gradient(to bottom, #1c3744 25%, rgba(221, 208, 182, 0.75));
@@ -17,6 +17,7 @@
   background-repeat: no-repeat;
   background-color: #1c3744;
   box-shadow: 0 0 20px 10px #1c3744;
+  margin: auto;
   height: 194px;
   width: 253px; }
 
