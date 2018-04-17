@@ -23,7 +23,8 @@ describe('getIngredients', () => {
   })
 
   it('should be called with the right params', () => {
-    const expected = 'http://localhost:3000/api/v1/ingredients'
+    // const expected = 'http://localhost:3000/api/v1/ingredients'
+    const expected = 'https://zelda-cookbook-backend.herokuapp.com/api/v1/ingredients'
     getIngredients()
     expect(window.fetch).toHaveBeenCalledWith(expected)
   })
@@ -82,7 +83,8 @@ describe('getRecipes', () => {
   })
 
   it('should be called with the right params', () => {
-    const expected = 'http://localhost:3000/api/v1/recipes'
+    // const expected = 'http://localhost:3000/api/v1/recipes'
+    const expected = 'https://zelda-cookbook-backend.herokuapp.com/api/v1/recipes'
     getRecipes()
     expect(window.fetch).toHaveBeenCalledWith(expected)
   })
