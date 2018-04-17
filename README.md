@@ -68,6 +68,10 @@ This site is deployed with [Surge.sh](https://surge.sh/)
 
 * **Spencer Herms** - *slherms@gmail.com* - [GitHub](https://github.com/PreciseSlice)
 
+## Screenshots
+
+
+
 ## Acknowledgments
 
 * Ingredient and recipe data scraped from [Zelda Wiki](https://zelda.gamepedia.com/Main_Page) and [orcz.com](http://orcz.com/Category:Breath_of_the_Wild_Wiki) using [Nightmare.js](http://www.nightmarejs.org/)
