@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import IngredientFilter from '../IngredientFilter/IngredientFilter';
-import NameFilter from '../NameFilter/NameFilter';
-import EffectFilter from '../EffectFilter/EffectFilter';
+import IngredientFilter from '../../Containers/IngredientFilter/IngredientFilter';
+import NameFilter from '../../Containers/NameFilter/NameFilter';
+import EffectFilter from '../../Containers/EffectFilter/EffectFilter';
 import './Filter.css';
 
 export class Filter extends Component {

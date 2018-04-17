@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getRecipes, getIngredients } from '../../apiCalls';
-import Filter from '../Filter/Filter';
+import Filter from '../../Components/Filter/Filter';
 import RecipeContainer from '../RecipeContainer/RecipeContainer';
 import { populateRecipes, populateIngredients } from '../../actions';
 import './App.css';
