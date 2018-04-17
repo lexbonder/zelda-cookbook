@@ -11,5 +11,4 @@ deploy:
   project: ./build/
   domain: zelda-cookbook.surge.sh
   skip-cleanup: true
-  - SURGE_LOGIN: lexbonder@gmail.com
   - SURGE_TOKEN: 41bdc7700865653dcd70ce9007d8e51b
