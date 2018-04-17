@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif:700');
 
+$recipe-background: rgba(88,98,94,.75);
+$text-color: rgb(223, 213, 195);
+
 #all-recipe-container {
   display: flex;
   flex-direction: column;
@@ -9,12 +12,14 @@
 }
 
 .recipe-card-container {
+  font-family: fantasy, 'sans-serif';
+  letter-spacing: 1px;  
   width: 558px;
   margin: 10px auto;
   border-radius: 10px;
-  background-color: rgba(88,98,94,.75);
+  background-color: $recipe-background;
   padding: 10px;
-  color: rgb(223, 213, 195);
+  color: $text-color;
   position: relative;
 }
 
@@ -24,7 +29,7 @@ article {
 }
 
 .ingredient img {
-  border: 1px solid rgba(88,98,94,.75);
+  border: 1px solid $recipe-background;
   display: block;
   margin: auto;
 }
@@ -36,7 +41,7 @@ article {
 
 .ingredients h3 {
   font-size: 20px;
-  margin: 0 20px;
+  margin: 10px 20px;
 }
 
 .ingredients {
@@ -69,7 +74,7 @@ article {
 }
 
 .recipe-hearts {
-  align-items: center;
+  align-items: start;
   display: grid;
   height: 20px;
   grid-template-columns: 35px auto 40px auto;

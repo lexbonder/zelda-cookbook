@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Serif:700");
 
+$header-bacground: rgb(28,55,68);
+
 * {
   box-sizing: border-box;
 }
 
 .App {
   display: grid;
-  grid-template-columns: 300px auto;
+  grid-template-columns: 340px auto;
 }
 
 .sidebar {
@@ -19,9 +21,10 @@
   background-image: url('../../assets/small-zelda-header.png');
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: #1c3744;
+  background-color: $header-bacground;
   
-  box-shadow: 0 0 20px 10px rgb(28,55,68);
+  box-shadow: 0 0 20px 10px $header-bacground;
+  margin: auto;
   height: 194px;
   width: 253px;
 }

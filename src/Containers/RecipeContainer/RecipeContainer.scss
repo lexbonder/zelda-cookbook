@@ -1,10 +1,12 @@
+$gif-inset: rgb(67,110,82);
+
 #loading {
   background-image: url('https://68.media.tumblr.com/7a5f3925e8e8351619759a2a9566bb03/tumblr_omsjs7eiVk1r85hlio1_r1_500.gif');
   background-repeat: no-repeat;
-  box-shadow: inset 0 20px 20px -20px #436E52,
-              inset 20px 0 20px -20px #436E52,
-              inset -20px 0 20px -20px #436E52,
-              inset 0 -20px 20px -20px #436E52,
+  box-shadow: inset 0 20px 20px -20px $gif-inset,
+              inset 20px 0 20px -20px $gif-inset,
+              inset -20px 0 20px -20px $gif-inset,
+              inset 0 -20px 20px -20px $gif-inset,
               0 0 10px 10px #d6c8afb6;
   height: 270px;
   width: 500px;
@@ -12,7 +14,7 @@
 }
 
 #loading h1 {
-  color: #EDE5CB;
+  color: rgb(237,229,203);
   display: block;
   line-height: 135px;
   margin-left: 130px;

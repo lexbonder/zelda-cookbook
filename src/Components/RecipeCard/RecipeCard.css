@@ -7,6 +7,8 @@
   height: 100vh; }
 
 .recipe-card-container {
+  font-family: fantasy, 'sans-serif';
+  letter-spacing: 1px;
   width: 558px;
   margin: 10px auto;
   border-radius: 10px;
@@ -30,7 +32,7 @@ article {
 
 .ingredients h3 {
   font-size: 20px;
-  margin: 0 20px; }
+  margin: 10px 20px; }
 
 .ingredients {
   padding-top: 33px; }
@@ -55,7 +57,7 @@ article {
   padding-left: 20px; }
 
 .recipe-hearts {
-  align-items: center;
+  align-items: start;
   display: grid;
   height: 20px;
   grid-template-columns: 35px auto 40px auto;
