@@ -70,7 +70,7 @@ This site is deployed with [Surge.sh](https://surge.sh/)
 
 ## Screenshots
 
-
+![Landing Page](./LoZ-cookbook.png)
 
 ## Acknowledgments
 
