@@ -8,7 +8,6 @@ notifications:
   email: false
 deploy:
   provider: surge
-  SURGE_TOKEN: 41bdc7700865653dcd70ce9007d8e51b
   project: ./build/
   domain: zelda-cookbook.surge.sh
   skip-cleanup: true
