@@ -33,7 +33,7 @@ const RecipeCard = (props) => {
     for (let i = 1; i <= 5; i++ ) {
       if (props[`ingredient${i}_image`]) {
         ingredients.push (
-          <h3 className={`ingredient ${name} ${props[`ingredient${i}`]}`}>
+          <h3 key={i} className={`ingredient ${name} ${props[`ingredient${i}`]}`}>
             <img src={ props[`ingredient${i}_image`] } alt={ props[`ingredient${i}`] } />
             { props[`ingredient${i}`] }
           </h3>
