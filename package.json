@@ -30,6 +30,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "jest-enzyme": "^6.1.2"
+    "jest-enzyme": "^6.1.2",
+    "npm-run-all": "^4.1.5"
   }
 }
